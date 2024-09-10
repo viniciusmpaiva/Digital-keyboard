@@ -36,5 +36,6 @@ module.exports = {
     'jsx-a11y/no-autofocus': 0,
     'no-unused-expressions': 0,
     'prefer-const': 0,
+    'react/prop-types': 0,
   },
 };

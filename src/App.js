@@ -1,6 +1,6 @@
 import React from 'react';
 
-import Keyboard from './pages/Keyboard';
+import Keyboard from './Components/Keyboard';
 
 function App() {
   return <Keyboard />;
