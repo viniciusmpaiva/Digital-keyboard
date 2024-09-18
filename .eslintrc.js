@@ -37,5 +37,6 @@ module.exports = {
     'no-unused-expressions': 0,
     'prefer-const': 0,
     'react/prop-types': 0,
+    'react/jsx-props-no-spreading': 0,
   },
 };
