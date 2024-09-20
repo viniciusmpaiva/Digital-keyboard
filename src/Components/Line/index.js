@@ -9,6 +9,9 @@ export default function Line({
   lineNumber,
   setActiveCard,
   onDrop,
+  targetIndex,
+  setTargetIndex,
+  changePressed,
 }) {
   return (
     <LineContainer>
@@ -21,6 +24,10 @@ export default function Line({
             lineNumber={lineNumber}
             setActiveCard={setActiveCard}
             onDrop={() => onDrop(lineNumber, index)}
+            targetIndex={targetIndex}
+            setTargetIndex={setTargetIndex}
+            index={index}
+            changePressed={changePressed}
           />
         );
       })}

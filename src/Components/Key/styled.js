@@ -8,8 +8,21 @@ export const KeyButton = styled.button`
   background-color: #fff;
   border: none;
   border-radius: 4px;
-  transition: all 300ms;
+  transition:
+    all 300ms,
+    border 50ms;
   :hover {
     filter: brightness(75%);
+  }
+  &.dragging {
+    opacity: 1;
+    background-color: #999;
+    border: 1px dashed #999;
+    cursor: grabbing;
+  }
+
+  &.target {
+    border: 2px solid #000;
+    background-color: #999;
   }
 `;
