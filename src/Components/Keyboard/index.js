@@ -17,8 +17,11 @@ export default function Keyboard() {
 
   const [isUpper, setIsUpper] = useState('');
   const [upperPressed, setUpperPressed] = useState('notPressed');
+  const [changePressed, setChangePressed] = useState(false);
 
   const [activeCard, setActiveCard] = useState(null);
+
+  const [targetIndex, setTargetIndex] = useState(null);
 
   const [keyboard, setKeyboard] = useState([
     'Q',
@@ -50,10 +53,21 @@ export default function Keyboard() {
     'M',
   ]);
 
-  const handleSpecialButtonClick = () => {
+  const handleDelete = () => {
     const newText = text.slice(0, text.length - 1);
     setText(newText);
     inputRef.current.focus();
+  };
+  const handleSpecialButtonClick = (e) => {
+    if (e.target.className === 'delete') {
+      handleDelete();
+    }
+    if (
+      e.target.className === 'change pressed' ||
+      e.target.className === 'change'
+    ) {
+      setChangePressed(!changePressed);
+    }
   };
 
   const handleKeyClick = (key) => {
@@ -107,13 +121,17 @@ export default function Keyboard() {
     newKeyboardOrder[currentKeyIndex] = newKeyboardOrder[newIndex];
     newKeyboardOrder[newIndex] = temp;
     setKeyboard(newKeyboardOrder);
+    setTargetIndex(null);
   };
 
   return (
     <Container>
       <ReadInputContainer>
         <input type="text" value={text} autoFocus ref={inputRef} />
-        <SpecialButtons onClick={handleSpecialButtonClick} />
+        <SpecialButtons
+          onClick={(e) => handleSpecialButtonClick(e)}
+          changePressed={changePressed}
+        />
       </ReadInputContainer>
       <KeyboardContainer>
         <Line
@@ -122,6 +140,9 @@ export default function Keyboard() {
           lineNumber="line1"
           setActiveCard={setActiveCard}
           onDrop={onDrop}
+          targetIndex={targetIndex}
+          setTargetIndex={setTargetIndex}
+          changePressed={changePressed}
         />
         <Line
           keys={keyboard.slice(10, 20)}
@@ -129,6 +150,9 @@ export default function Keyboard() {
           lineNumber="line2"
           setActiveCard={setActiveCard}
           onDrop={onDrop}
+          targetIndex={targetIndex}
+          setTargetIndex={setTargetIndex}
+          changePressed={changePressed}
         />
         <LastLineContainer>
           <Line
@@ -137,6 +161,9 @@ export default function Keyboard() {
             lineNumber="line3"
             setActiveCard={setActiveCard}
             onDrop={onDrop}
+            targetIndex={targetIndex}
+            setTargetIndex={setTargetIndex}
+            changePressed={changePressed}
           />
 
           <SpecialKeys
