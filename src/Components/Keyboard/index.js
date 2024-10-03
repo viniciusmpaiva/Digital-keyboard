@@ -4,12 +4,14 @@ import {
   Container,
   ReadInputContainer,
   KeyboardContainer,
-  LastLineContainer,
+  DisplayKeyLineContainer,
+  DisplayKeysContainer,
 } from './styled';
 
 import SpecialButtons from '../SpecialButtons';
 import Line from '../Line';
 import SpecialKeys from '../SpecialKeys';
+import KeyBox from '../KeyBox';
 
 export default function Keyboard() {
   const [text, setText] = useState('');
@@ -22,6 +24,8 @@ export default function Keyboard() {
   const [activeCard, setActiveCard] = useState(null);
 
   const [targetIndex, setTargetIndex] = useState(null);
+
+  const [showKeys, setShowKeys] = useState(null);
 
   const [keyboard, setKeyboard] = useState([
     'Q',
@@ -51,6 +55,7 @@ export default function Keyboard() {
     'B',
     'N',
     'M',
+    '?',
   ]);
 
   const handleDelete = () => {
@@ -124,6 +129,11 @@ export default function Keyboard() {
     setTargetIndex(null);
   };
 
+  const onBoxClick = (keys) => {
+    setShowKeys(keys);
+  };
+
+  let boxKeys = [];
   return (
     <Container>
       <ReadInputContainer>
@@ -133,46 +143,36 @@ export default function Keyboard() {
           changePressed={changePressed}
         />
       </ReadInputContainer>
+      <DisplayKeysContainer>
+        <DisplayKeyLineContainer>
+          {showKeys !== null ? (
+            <Line
+              keys={showKeys}
+              handleKeyClick={handleKeyClick}
+              lineNumber="line1"
+              setActiveCard={setActiveCard}
+              onDrop={onDrop}
+              targetIndex={targetIndex}
+              setTargetIndex={setTargetIndex}
+              changePressed={changePressed}
+            />
+          ) : null}
+        </DisplayKeyLineContainer>
+        <SpecialKeys
+          handleCaps={handleCaps}
+          handleSpace={handleSpace}
+          handleClear={handleClear}
+        />
+      </DisplayKeysContainer>
       <KeyboardContainer>
-        <Line
-          keys={keyboard.slice(0, 10)}
-          handleKeyClick={handleKeyClick}
-          lineNumber="line1"
-          setActiveCard={setActiveCard}
-          onDrop={onDrop}
-          targetIndex={targetIndex}
-          setTargetIndex={setTargetIndex}
-          changePressed={changePressed}
-        />
-        <Line
-          keys={keyboard.slice(10, 20)}
-          handleKeyClick={handleKeyClick}
-          lineNumber="line2"
-          setActiveCard={setActiveCard}
-          onDrop={onDrop}
-          targetIndex={targetIndex}
-          setTargetIndex={setTargetIndex}
-          changePressed={changePressed}
-        />
-        <LastLineContainer>
-          <Line
-            keys={keyboard.slice(20, 27)}
-            handleKeyClick={handleKeyClick}
-            lineNumber="line3"
-            setActiveCard={setActiveCard}
-            onDrop={onDrop}
-            targetIndex={targetIndex}
-            setTargetIndex={setTargetIndex}
-            changePressed={changePressed}
-          />
-
-          <SpecialKeys
-            handleCaps={handleCaps}
-            handleClear={handleClear}
-            handleSpace={handleSpace}
-            upperPressed={upperPressed}
-          />
-        </LastLineContainer>
+        {keyboard.map((key) => {
+          boxKeys.push(key);
+          if (boxKeys.length === 4) {
+            const temp = [...boxKeys];
+            boxKeys = [];
+            return <KeyBox keys={temp} onBoxClick={onBoxClick} />;
+          }
+        })}
       </KeyboardContainer>
     </Container>
   );

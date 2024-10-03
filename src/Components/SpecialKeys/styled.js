@@ -2,15 +2,16 @@ import styled from 'styled-components';
 
 export const SpecialKeyContainer = styled.div`
   display: flex;
-  justify-content: space-between;
-  margin-top: 8px;
-  margin-right: 15px;
-
+  justify-content: flex-start;
+  margin-bottom: 8px;
+  float: right;
+  position: absolute;
+  width: 400px;
+  margin-left: 510px;
+  margin-top: 4%;
   button {
-    width: 70px;
-    height: 40px;
-    margin-top: 7px;
-    margin-left: 17px;
+    width: 90px;
+    height: 60px;
     background-color: #fff;
     border: none;
     border-radius: 4px;
@@ -19,6 +20,7 @@ export const SpecialKeyContainer = styled.div`
     align-items: center;
     justify-content: center;
     font-size: 23px;
+    margin-left: 5px;
   }
 
   button:hover {

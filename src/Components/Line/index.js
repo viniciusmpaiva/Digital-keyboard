@@ -21,13 +21,18 @@ export default function Line({
             key={key}
             keyValue={key}
             handleKeyClick={handleKeyClick}
-            lineNumber={lineNumber}
-            setActiveCard={setActiveCard}
-            onDrop={() => onDrop(lineNumber, index)}
-            targetIndex={targetIndex}
-            setTargetIndex={setTargetIndex}
-            index={index}
-            changePressed={changePressed}
+            // lineNumber={lineNumber}
+            // setActiveCard={setActiveCard}
+            // onDrop={() => onDrop(lineNumber, index)}
+            // targetIndex={targetIndex}
+            // setTargetIndex={setTargetIndex}
+            // index={index}
+            // changePressed={changePressed}
+            width="105px"
+            height="60px"
+            marginLeft="15px"
+            backgroundColor="#d9d9d9"
+            fontSize="24px"
           />
         );
       })}

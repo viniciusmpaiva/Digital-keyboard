@@ -19,12 +19,14 @@ export const Container = styled.div`
 export const ReadInputContainer = styled.div`
   display: flex;
   align-items: baseline;
+  height: 50px;
+  margin-bottom: 40px;
 
   input {
     border: none;
     margin-top: 20px;
-    margin-left: 20px;
-    width: 750px;
+    margin-left: 1px;
+    width: 770px;
     height: 28px;
     border-radius: 2px;
     border-color: #fff;
@@ -36,12 +38,14 @@ export const ReadInputContainer = styled.div`
 `;
 
 export const KeyboardContainer = styled.div`
-  background-color: #eeeded;
+  background-color: #fff;
   max-width: 890px;
   height: 190px;
   border-radius: 4px;
+  display: flex;
   align-items: center;
   justify-content: center;
+  margin-top: 40px;
 `;
 
 export const LastLineContainer = styled.div`
@@ -49,4 +53,28 @@ export const LastLineContainer = styled.div`
   justify-content: space-between;
   width: 100%;
   margin-bottom: 7px;
+`;
+
+export const DisplayKeyLineContainer = styled.div`
+  background-color: #fff;
+  height: 80px;
+  width: 500px;
+  margin-bottom: 1px;
+  display: flex;
+  align-items: center;
+  position: absolute;
+  /* top: 70px; */
+  /* left: 5px; */
+  /* margin-left: 55px; */
+  /* margin-top : 100px; */
+  border-radius: 3px;
+  margin-top: 30px;
+`;
+
+export const DisplayKeysContainer = styled.div`
+  display: flex;
+  flex-direction: row;
+  /* width: 100%; */
+  justify-content: flex-start;
+  align-items: center;
 `;
