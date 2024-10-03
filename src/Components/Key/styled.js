@@ -1,11 +1,11 @@
 import styled from 'styled-components';
 
 export const KeyButton = styled.button`
-  width: 70px;
-  height: 40px;
-  margin-top: 7px;
-  margin-left: 17px;
-  background-color: #fff;
+  width: ${(props) => props.width};
+  height: ${(props) => props.height};
+  font-size: ${(props) => props.fontSize};
+  margin-left: ${(props) => props.marginleft};
+  background-color: ${(props) => props.backgroundcolor || '#fff'};
   border: none;
   border-radius: 4px;
   transition:
@@ -24,5 +24,8 @@ export const KeyButton = styled.button`
   &.target {
     border: 2px solid #000;
     background-color: #999;
+  }
+  &.disabled {
+    pointer-events: none;
   }
 `;
