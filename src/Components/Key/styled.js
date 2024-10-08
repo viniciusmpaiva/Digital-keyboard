@@ -1,13 +1,14 @@
 import styled from 'styled-components';
 
 export const KeyButton = styled.button`
-  width: ${(props) => props.width};
-  height: ${(props) => props.height};
+  width: ${(props) => props.width}px;
+  height: ${(props) => props.height}px;
   font-size: ${(props) => props.fontSize};
   margin-left: ${(props) => props.marginleft};
   background-color: ${(props) => props.backgroundcolor || '#fff'};
   border: none;
   border-radius: 4px;
+  cursor: pointer;
   transition:
     all 300ms,
     border 50ms;
