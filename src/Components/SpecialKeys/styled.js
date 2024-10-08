@@ -21,6 +21,7 @@ export const SpecialKeyContainer = styled.div`
     justify-content: center;
     font-size: 23px;
     margin-left: 5px;
+    cursor: pointer;
   }
 
   button:hover {

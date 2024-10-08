@@ -17,17 +17,8 @@ export default function Key({
   marginLeft,
   backgroundColor,
   fontSize,
+  numberOfKeys,
 }) {
-  // const [isDragging, setIsDragging] = useState(false);
-  // let fixedIndex;
-  // if (lineNumber === 'line2') {
-  //   fixedIndex = index + 10;
-  // } else if (lineNumber === 'line3') {
-  //   fixedIndex = index + 20;
-  // } else {
-  //   fixedIndex = index;
-  // }
-
   return (
     <KeyButton
       // className={`${lineNumber} ${isDragging ? 'dragging' : ''} ${targetIndex === fixedIndex ? 'target' : ''} ${isDisabled ? 'disabled' : ''}`}
@@ -45,7 +36,7 @@ export default function Key({
       //   setTargetIndex(null);
       // }}
       // onDrop={() => {
-      //   onDrop();
+      // onDrop();
       //   setIsDragging(false);
       //   setTargetIndex(null);
       // }}
@@ -58,6 +49,7 @@ export default function Key({
       marginleft={marginLeft}
       backgroundcolor={backgroundColor}
       fontSize={fontSize}
+      // numberOfKeys={numberOfKeys}
     >
       {keyValue}
     </KeyButton>

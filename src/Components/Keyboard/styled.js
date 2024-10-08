@@ -63,10 +63,6 @@ export const DisplayKeyLineContainer = styled.div`
   display: flex;
   align-items: center;
   position: absolute;
-  /* top: 70px; */
-  /* left: 5px; */
-  /* margin-left: 55px; */
-  /* margin-top : 100px; */
   border-radius: 3px;
   margin-top: 30px;
 `;

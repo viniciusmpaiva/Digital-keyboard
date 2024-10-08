@@ -6,13 +6,6 @@ import { SpecialButtonsContainer } from './styled';
 export default function SpecialButtons({ onClick, changePressed }) {
   return (
     <SpecialButtonsContainer>
-      {/* <button
-        type="button"
-        className={changePressed ? 'change pressed' : 'change'}
-        onClick={onClick}
-      >
-        {changePressed ? <CiUnlock /> : <CiLock />}
-      </button> */}
       <div className="enter-backspace">
         <button type="button" className="delete" onClick={onClick}>
           <FaDeleteLeft />
