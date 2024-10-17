@@ -11,6 +11,11 @@ export default function KeyBox({
   setTargetIndexBox,
   onDrop,
   numberOfKeyBoxes,
+  isChangeBoxPressed,
+  isChangeKeyPressed,
+  setActiveKey,
+  onDropKey,
+  setTargetIndexKey,
 }) {
   let widthBox;
   let widthKey;
@@ -36,11 +41,18 @@ export default function KeyBox({
     widthKey = 137;
     heightKey = 21;
   }
+
+  const handleBoxClick = () => {
+    if (isChangeBoxPressed) {
+      return;
+    }
+    onBoxClick(keys);
+  };
   return (
     <KeyBoxContainer
       className={targetIndexBox === index ? 'target' : ''}
-      onClick={() => onBoxClick(keys)}
-      draggable
+      onClick={() => handleBoxClick()}
+      draggable={isChangeBoxPressed}
       onDragStart={() => {
         setActiveBox(keys);
         setActiveBoxIndex(index);
@@ -64,11 +76,16 @@ export default function KeyBox({
           <Key
             key={idx}
             keyValue={key}
-            isDisabled
             handleKeyClick={() => {}}
             // targetIndex={null}
             width={widthKey}
             height={heightKey}
+            isChangeKeyPressed={isChangeKeyPressed}
+            setActiveKey={setActiveKey}
+            onDropKey={onDropKey}
+            setTargetIndexKey={setTargetIndexKey}
+            indexBox={index}
+            index={idx}
           />
         );
       })}

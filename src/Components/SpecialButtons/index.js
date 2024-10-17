@@ -1,6 +1,5 @@
 import { FaDeleteLeft } from 'react-icons/fa6';
 import { MdOutlineKeyboardReturn } from 'react-icons/md';
-import { CiLock, CiUnlock } from 'react-icons/ci';
 import { SpecialButtonsContainer } from './styled';
 
 export default function SpecialButtons({ onClick, changePressed }) {

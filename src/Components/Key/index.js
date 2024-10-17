@@ -1,55 +1,50 @@
-import { useState } from 'react';
 import { KeyButton } from './styled';
 
 export default function Key({
   keyValue,
-  isDisabled,
   handleKeyClick,
   // targetIndex,
   // lineNumber,
-  // setActiveCard,
-  // onDrop,
-  // setTargetIndex,
-  // index,
+  setActiveKey,
+  onDropKey,
+  setTargetIndexKey,
+  // indexBox,
   // changePressed,
   width,
   height,
   marginLeft,
   backgroundColor,
   fontSize,
-  numberOfKeys,
+  isChangeKeyPressed,
 }) {
+  let fixedIndex = 0;
   return (
     <KeyButton
+      draggable={isChangeKeyPressed}
       // className={`${lineNumber} ${isDragging ? 'dragging' : ''} ${targetIndex === fixedIndex ? 'target' : ''} ${isDisabled ? 'disabled' : ''}`}
-      className={`${isDisabled ? 'disabled' : ''}`}
+      // className={`${isDisabled ? 'disabled' : ''}`}
       key={keyValue}
       onClick={() => handleKeyClick(keyValue)}
-      // draggable={changePressed}
-      // onDragStart={() => {
-      //   setActiveCard(keyValue);
-      //   setIsDragging(true);
-      // }}
-      // onDragEnd={() => {
-      //   setActiveCard(null);
-      //   setIsDragging(false);
-      //   setTargetIndex(null);
-      // }}
-      // onDrop={() => {
-      // onDrop();
-      //   setIsDragging(false);
-      //   setTargetIndex(null);
-      // }}
-      // onDragOver={(e) => {
-      //   e.preventDefault();
-      //   setTargetIndex(fixedIndex);
-      // }}
+      onDragStart={() => {
+        setActiveKey(keyValue);
+      }}
+      onDragEnd={() => {
+        setActiveKey(null);
+        setTargetIndexKey(null);
+      }}
+      onDropKey={() => {
+        onDropKey();
+        setTargetIndexKey(null);
+      }}
+      onDragOver={(e) => {
+        e.preventDefault();
+        setTargetIndexKey(fixedIndex);
+      }}
       width={width}
       height={height}
       marginleft={marginLeft}
       backgroundcolor={backgroundColor}
       fontSize={fontSize}
-      // numberOfKeys={numberOfKeys}
     >
       {keyValue}
     </KeyButton>
