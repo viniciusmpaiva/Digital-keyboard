@@ -13,7 +13,13 @@ import Line from '../Line';
 import SpecialKeys from '../SpecialKeys';
 import KeyBox from '../KeyBox';
 
-export default function Keyboard({ numberOfBoxes, showKeys, setShowKeys }) {
+export default function Keyboard({
+  numberOfBoxes,
+  showKeys,
+  setShowKeys,
+  isChangeBoxPressed,
+  isChangeKeyPressed,
+}) {
   const [text, setText] = useState('');
 
   const inputRef = useRef(null);
@@ -211,6 +217,11 @@ export default function Keyboard({ numberOfBoxes, showKeys, setShowKeys }) {
             setTargetIndexBox={setTargetIndexBox}
             onDrop={() => onDropBox(Math.floor(index / 4))}
             numberOfKeyBoxes={numberOfBoxes}
+            isChangeBoxPressed={isChangeBoxPressed}
+            isChangeKeyPressed={isChangeKeyPressed}
+            setActiveKey={setActiveKey}
+            onDropKey={onDropKey}
+            setTargetIndexKey={setTargetIndexKey}
           />
         ))}
       </KeyboardContainer>
