@@ -30,15 +30,20 @@ export default function Keyboard({
 
   const [changePressed, setChangePressed] = useState(false);
 
-  const [activeKey, setActiveKey] = useState(null);
+  // Key dealing states
+  const [activeKeyIndex, setActiveKeyIndex] = useState(null);
+  const [activeKeyBoxIndex, setActiveKeyBoxIndex] = useState(null);
+  const [targetKeyIndex, setTargetKeyIndex] = useState(null);
+  const [targetKeyBoxIndex, setTargetKeyBoxIndex] = useState(null);
 
-  const [targetIndexKey, setTargetIndexKey] = useState(null);
-
+  // Box dealing states
   const [activeBox, setActiveBox] = useState(null);
 
   const [activeBoxIndex, setActiveBoxIndex] = useState(null);
 
   const [targetIndexBox, setTargetIndexBox] = useState(null);
+
+  // Keyboard dealing states
 
   const [boxes, setBoxes] = useState([]);
 
@@ -137,24 +142,13 @@ export default function Keyboard({
     inputRef.current.focus();
   };
 
-  const onDropKey = (line, index) => {
-    if (activeKey === null || activeKey === undefined) return;
-
-    const currentKeyIndex = keyboard.indexOf(activeKey);
-    const newKeyboardOrder = [...keyboard];
-    let newIndex;
-    if (line === 'line1') {
-      newIndex = index;
-    } else if (line === 'line2') {
-      newIndex = index + 10;
-    } else {
-      newIndex = index + 20;
-    }
-    const temp = newKeyboardOrder[currentKeyIndex];
-    newKeyboardOrder[currentKeyIndex] = newKeyboardOrder[newIndex];
-    newKeyboardOrder[newIndex] = temp;
-    setKeyboard(newKeyboardOrder);
-    setTargetIndexKey(null);
+  const onDropKey = () => {
+    const newBoxes = [...boxes];
+    const temp = newBoxes[activeKeyBoxIndex][activeKeyIndex];
+    newBoxes[activeKeyBoxIndex][activeKeyIndex] =
+      newBoxes[targetKeyBoxIndex][targetKeyIndex];
+    newBoxes[targetKeyBoxIndex][targetKeyIndex] = temp;
+    setBoxes(newBoxes);
   };
 
   const onDropBox = () => {
@@ -189,10 +183,10 @@ export default function Keyboard({
             <Line
               keys={showKeys}
               handleKeyClick={handleKeyClick}
-              setActiveKey={setActiveKey}
+              setActiveKeyIndex={setActiveKeyIndex}
               onDrop={onDropKey}
-              targetIndexKey={targetIndexKey}
-              setTargetIndexKey={setTargetIndexKey}
+              // targetIndexKey={targetIndexKey}
+              // setTargetIndexKey={setTargetIndexKey}
               changePressed={changePressed}
               numberOfKeyBoxes={numberOfBoxes}
             />
@@ -210,18 +204,22 @@ export default function Keyboard({
             key={index}
             keys={box}
             onBoxClick={onBoxClick}
-            index={index}
+            indexBox={index}
             setActiveBox={setActiveBox}
             setActiveBoxIndex={setActiveBoxIndex}
             targetIndexBox={targetIndexBox}
             setTargetIndexBox={setTargetIndexBox}
-            onDrop={() => onDropBox(Math.floor(index / 4))}
+            onDropBox={() => onDropBox(Math.floor(index / 4))}
             numberOfKeyBoxes={numberOfBoxes}
             isChangeBoxPressed={isChangeBoxPressed}
             isChangeKeyPressed={isChangeKeyPressed}
-            setActiveKey={setActiveKey}
+            setTargetKeyIndex={setTargetKeyIndex}
+            setTargetKeyBoxIndex={setTargetKeyBoxIndex}
+            setActiveKeyIndex={setActiveKeyIndex}
+            setActiveKeyBoxIndex={setActiveKeyBoxIndex}
+            targetKeyIndex={targetKeyIndex}
+            targetKeyBoxIndex={targetKeyBoxIndex}
             onDropKey={onDropKey}
-            setTargetIndexKey={setTargetIndexKey}
           />
         ))}
       </KeyboardContainer>

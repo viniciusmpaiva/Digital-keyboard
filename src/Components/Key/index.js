@@ -1,44 +1,54 @@
 import { KeyButton } from './styled';
 
 export default function Key({
-  keyValue,
-  handleKeyClick,
-  // targetIndex,
-  // lineNumber,
-  setActiveKey,
-  onDropKey,
-  setTargetIndexKey,
-  // indexBox,
-  // changePressed,
   width,
   height,
   marginLeft,
   backgroundColor,
   fontSize,
+  isLine,
+  keyValue,
+  handleKeyClick,
   isChangeKeyPressed,
+  isChangeBoxPressed,
+  indexKey,
+  indexBox,
+  setTargetKeyIndex,
+  setTargetKeyBoxIndex,
+  setActiveKeyIndex,
+  setActiveKeyBoxIndex,
+  targetKeyIndex,
+  targetKeyBoxIndex,
+  onDropKey,
 }) {
-  let fixedIndex = 0;
   return (
     <KeyButton
       draggable={isChangeKeyPressed}
-      // className={`${lineNumber} ${isDragging ? 'dragging' : ''} ${targetIndex === fixedIndex ? 'target' : ''} ${isDisabled ? 'disabled' : ''}`}
-      // className={`${isDisabled ? 'disabled' : ''}`}
+      className={`${indexKey === targetKeyIndex && indexBox === targetKeyBoxIndex && !isLine ? 'target' : ''}`}
       key={keyValue}
       onClick={() => handleKeyClick(keyValue)}
       onDragStart={() => {
-        setActiveKey(keyValue);
+        setActiveKeyBoxIndex(indexBox);
+        setActiveKeyIndex(indexKey);
       }}
       onDragEnd={() => {
-        setActiveKey(null);
-        setTargetIndexKey(null);
+        setActiveKeyIndex(null);
+        setActiveKeyBoxIndex(null);
+        setTargetKeyIndex(null);
+        setTargetKeyBoxIndex(null);
       }}
-      onDropKey={() => {
+      onDrop={() => {
+        if (isChangeBoxPressed) return;
         onDropKey();
-        setTargetIndexKey(null);
+        setTargetKeyIndex(null);
+        setTargetKeyBoxIndex(null);
       }}
       onDragOver={(e) => {
+        if (isChangeBoxPressed) return;
+
         e.preventDefault();
-        setTargetIndexKey(fixedIndex);
+        setTargetKeyIndex(indexKey);
+        setTargetKeyBoxIndex(indexBox);
       }}
       width={width}
       height={height}
