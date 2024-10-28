@@ -3,17 +3,7 @@ import React from 'react';
 import Key from '../Key';
 import { LineContainer } from './styled';
 
-export default function Line({
-  keys,
-  handleKeyClick,
-  lineNumber,
-  setActiveCard,
-  onDrop,
-  targetIndex,
-  setTargetIndex,
-  changePressed,
-  numberOfKeyBoxes,
-}) {
+export default function Line({ keys, handleKeyClick, numberOfKeyBoxes }) {
   let widthKey;
   let heightKey;
   if (numberOfKeyBoxes === 7) {
@@ -34,22 +24,15 @@ export default function Line({
   }
   return (
     <LineContainer>
-      {keys.map((key, index) => {
+      {keys.map((key) => {
         return (
           <Key
+            isLine
             key={key}
             keyValue={key}
             handleKeyClick={handleKeyClick}
-            // lineNumber={lineNumber}
-            // setActiveCard={setActiveCard}
-            // onDrop={() => onDrop(lineNumber, index)}
-            // targetIndex={targetIndex}
-            // setTargetIndex={setTargetIndex}
-            // index={index}
-            // changePressed={changePressed}
             width={widthKey}
             height={heightKey}
-            // height="60px"
             marginLeft="5px"
             backgroundColor="#d9d9d9"
             fontSize="20px"

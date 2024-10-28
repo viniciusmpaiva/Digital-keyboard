@@ -4,18 +4,22 @@ import Key from '../Key';
 export default function KeyBox({
   keys,
   onBoxClick,
-  index,
+  indexBox,
   setActiveBox,
   setActiveBoxIndex,
   targetIndexBox,
   setTargetIndexBox,
-  onDrop,
+  onDropBox,
   numberOfKeyBoxes,
   isChangeBoxPressed,
   isChangeKeyPressed,
-  setActiveKey,
+  setTargetKeyIndex,
+  setTargetKeyBoxIndex,
+  setActiveKeyIndex,
+  setActiveKeyBoxIndex,
+  targetKeyIndex,
+  targetKeyBoxIndex,
   onDropKey,
-  setTargetIndexKey,
 }) {
   let widthBox;
   let widthKey;
@@ -50,42 +54,52 @@ export default function KeyBox({
   };
   return (
     <KeyBoxContainer
-      className={targetIndexBox === index ? 'target' : ''}
+      className={targetIndexBox === indexBox ? 'target' : ''}
       onClick={() => handleBoxClick()}
       draggable={isChangeBoxPressed}
       onDragStart={() => {
         setActiveBox(keys);
-        setActiveBoxIndex(index);
+        setActiveBoxIndex(indexBox);
       }}
       onDragEnd={() => {
         setActiveBox(null);
         setTargetIndexBox(null);
       }}
       onDrop={() => {
-        onDrop(index);
+        if (isChangeKeyPressed) {
+          return;
+        }
+        onDropBox(indexBox);
         setTargetIndexBox(null);
       }}
       onDragOver={(e) => {
+        if (isChangeKeyPressed) {
+          return;
+        }
         e.preventDefault();
-        setTargetIndexBox(index);
+        setTargetIndexBox(indexBox);
       }}
       width={widthBox}
     >
-      {keys.map((key, idx) => {
+      {keys.map((key, indexKey) => {
         return (
           <Key
-            key={idx}
+            key={indexKey}
             keyValue={key}
             handleKeyClick={() => {}}
-            // targetIndex={null}
             width={widthKey}
             height={heightKey}
             isChangeKeyPressed={isChangeKeyPressed}
-            setActiveKey={setActiveKey}
+            isChangeBoxPressed={isChangeBoxPressed}
+            indexBox={indexBox}
+            indexKey={indexKey}
+            setTargetKeyIndex={setTargetKeyIndex}
+            setTargetKeyBoxIndex={setTargetKeyBoxIndex}
+            setActiveKeyIndex={setActiveKeyIndex}
+            setActiveKeyBoxIndex={setActiveKeyBoxIndex}
+            targetKeyIndex={targetKeyIndex}
+            targetKeyBoxIndex={targetKeyBoxIndex}
             onDropKey={onDropKey}
-            setTargetIndexKey={setTargetIndexKey}
-            indexBox={index}
-            index={idx}
           />
         );
       })}
