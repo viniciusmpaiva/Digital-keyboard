@@ -19,6 +19,8 @@ export default function Keyboard({
   setShowKeys,
   isChangeBoxPressed,
   isChangeKeyPressed,
+  boxes,
+  setBoxes,
 }) {
   const [text, setText] = useState('');
 
@@ -38,57 +40,8 @@ export default function Keyboard({
 
   // Box dealing states
   const [activeBox, setActiveBox] = useState(null);
-
   const [activeBoxIndex, setActiveBoxIndex] = useState(null);
-
   const [targetIndexBox, setTargetIndexBox] = useState(null);
-
-  // Keyboard dealing states
-
-  const [boxes, setBoxes] = useState([]);
-
-  const [keyboard, setKeyboard] = useState([
-    'Q',
-    'W',
-    'E',
-    'R',
-    'T',
-    'Y',
-    'U',
-    'I',
-    'O',
-    'P',
-    'A',
-    'S',
-    'D',
-    'F',
-    'G',
-    'H',
-    'J',
-    'K',
-    'L',
-    'Ç',
-    'Z',
-    'X',
-    'C',
-    'V',
-    'B',
-    'N',
-    'M',
-    '?',
-  ]);
-
-  useEffect(() => {
-    const distributeKeys = () => {
-      const tempBoxes = Array.from({ length: numberOfBoxes }, () => []);
-      keyboard.forEach((key, index) => {
-        tempBoxes[index % numberOfBoxes].push(key);
-      });
-      return tempBoxes;
-    };
-    const newBoxes = distributeKeys(keyboard, numberOfBoxes);
-    setBoxes(newBoxes);
-  }, [keyboard, numberOfBoxes]);
 
   const handleDelete = () => {
     const newText = text.slice(0, text.length - 1);
@@ -157,7 +110,6 @@ export default function Keyboard({
     const temp = newBoxes[activeBoxIndex];
     newBoxes[activeBoxIndex] = newBoxes[targetIndexBox];
     newBoxes[targetIndexBox] = temp;
-    console.log(newBoxes);
     setBoxes(newBoxes);
   };
 
@@ -185,8 +137,6 @@ export default function Keyboard({
               handleKeyClick={handleKeyClick}
               setActiveKeyIndex={setActiveKeyIndex}
               onDrop={onDropKey}
-              // targetIndexKey={targetIndexKey}
-              // setTargetIndexKey={setTargetIndexKey}
               changePressed={changePressed}
               numberOfKeyBoxes={numberOfBoxes}
             />
