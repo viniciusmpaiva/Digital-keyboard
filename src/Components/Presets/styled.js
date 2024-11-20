@@ -19,8 +19,9 @@ export const PresetsContainer = styled.div`
       border 50ms;
     cursor: pointer;
   }
-  .editButton {
+  .newPresetButton {
     margin-top: 10px;
+    font-size: 20px;
   }
 
   :hover {

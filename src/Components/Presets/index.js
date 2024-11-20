@@ -5,7 +5,7 @@ export default function Presets({
   onPresetButtonClick,
   presets,
   setPresets,
-  handleEditPressed,
+  handleNewPreset,
   presetPressed,
   setEditPressed,
 }) {
@@ -16,8 +16,12 @@ export default function Presets({
   };
   return (
     <PresetsContainer>
-      <button type="button" className="editButton" onClick={handleEditPressed}>
-        Edit
+      <button
+        type="button"
+        className="newPresetButton"
+        onClick={handleNewPreset}
+      >
+        New Preset
       </button>
       {presets != null
         ? presets.map((preset, index) => (
