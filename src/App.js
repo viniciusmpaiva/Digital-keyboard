@@ -21,6 +21,8 @@ function App() {
     ['U', 'F', 'Z', '?'],
   ]);
 
+  const [editing, setEditing] = useState(false);
+
   useEffect(() => {
     const distributeKeys = () => {
       const keyboard = [];
@@ -36,7 +38,10 @@ function App() {
       return tempBoxes;
     };
     const newBoxes = distributeKeys();
-    setBoxes(newBoxes);
+    if (editing) {
+      setBoxes(newBoxes);
+      setEditing(false);
+    }
   }, [numberOfBoxes]);
 
   const loadPresets = () => {
@@ -72,11 +77,12 @@ function App() {
     const loadedPresets = loadPresets();
     const loadedBox = loadedPresets[index];
     const newNumberOfBoxes = loadedBox.length;
+
     setNumberOfBoxes(newNumberOfBoxes);
     setBoxes(loadedBox);
   };
 
-  const handleEditPressed = () => {
+  const handleNewPreset = () => {
     setEditPressed(!isEditPressed);
     setChangeBoxPressed(false);
     setChangeKeyPressed(false);
@@ -95,6 +101,7 @@ function App() {
       />
       {isEditPressed === true ? (
         <Options
+          setEditing={setEditing}
           numberOfBoxes={numberOfBoxes}
           setNumberOfBoxes={setNumberOfBoxes}
           setShowKeys={setShowKeys}
@@ -110,7 +117,7 @@ function App() {
         onPresetButtonClick={onPresetButtonClick}
         presets={presets}
         setPresets={setPresets}
-        handleEditPressed={handleEditPressed}
+        handleNewPreset={handleNewPreset}
         setEditPressed={setEditPressed}
       />
     </>

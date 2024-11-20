@@ -15,12 +15,14 @@ export default function Options({
   setChangeKeyPressed,
   onSaveButtonClick,
   setEditPressed,
+  setEditing,
 }) {
   const onPlusClick = () => {
     if (numberOfBoxes > 6) {
       return;
     }
     setNumberOfBoxes(numberOfBoxes + 1);
+    setEditing(true);
     setShowKeys(null);
   };
   const onMinusClick = () => {
@@ -28,6 +30,8 @@ export default function Options({
       return;
     }
     setNumberOfBoxes(numberOfBoxes - 1);
+    setEditing(true);
+
     setShowKeys(null);
   };
 
