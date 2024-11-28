@@ -42,6 +42,25 @@ function App() {
       setBoxes(newBoxes);
       setEditing(false);
     }
+
+    // if (window.webgazer) {
+    //   // Configura e inicia o WebGazer
+    //   window.webgazer
+    //     .setGazeListener((data, elapsedTime) => {
+    //       if (data) {
+    //         console.log(
+    //           `Olhar em x: ${data.x}, y: ${data.y} no tempo ${elapsedTime}`
+    //         );
+    //       }
+    //     })
+    //     .begin();
+
+    //   // Oculta elementos extras do WebGazer
+    //   window.webgazer
+    //     .showVideo(true)
+    //     .showFaceOverlay(true)
+    //     .showFaceFeedbackBox(true);
+    // }
   }, [numberOfBoxes]);
 
   const loadPresets = () => {
