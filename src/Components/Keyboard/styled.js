@@ -1,33 +1,33 @@
 import styled from 'styled-components';
 
 export const Container = styled.div`
-  width: 900px;
-  max-width: 900px;
-  height: 350px;
+  grid-row: 2;
+  width: 85%;
   background-color: #d9d9d9;
+  height: 100%;
   display: grid;
-  position: absolute;
-  left: 50%;
-  bottom: 0;
-  transform: translateX(-50%);
-  margin-bottom: 20px;
-  border-radius: 5px;
-  align-items: center;
-  justify-content: center;
+  grid-template-rows: auto auto auto;
+  grid-template-columns: 1fr auto 1fr;
+  border-radius: 4px;
+`;
+export const CenterItems = styled.div`
+  grid-column: 1 / span 3;
+  grid-row: 3;
+  place-items: center;
 `;
 
-export const ReadInputContainer = styled.div`
+export const TextInputContainer = styled.div`
+  grid-column: 1 / span 3;
   display: flex;
-  align-items: baseline;
-  height: 50px;
-  margin-bottom: 40px;
-
+  flex-direction: row;
+  justify-content: flex-end;
+  grid-row: 1 / span 2;
   input {
+    margin-right: 2%;
     border: none;
-    margin-top: 20px;
-    margin-left: 1px;
-    width: 770px;
-    height: 28px;
+    width: 85%;
+    height: 20%;
+    margin-top: 2%;
     border-radius: 2px;
     border-color: #fff;
   }
@@ -37,40 +37,44 @@ export const ReadInputContainer = styled.div`
   }
 `;
 
-export const KeyboardContainer = styled.div`
+export const KeysContainer = styled.div`
   background-color: #fff;
-  max-width: 890px;
-  height: 190px;
   border-radius: 4px;
   display: flex;
-  align-items: center;
-  justify-content: center;
-  margin-top: 40px;
-`;
+  place-items: center;
+  height: 100%;
+  width: 98%;
+  display: grid;
 
-export const LastLineContainer = styled.div`
-  display: flex;
-  justify-content: space-between;
-  width: 100%;
-  margin-bottom: 7px;
+  grid-template-columns: repeat(${(props) => props.numberOfBoxes}, 1fr);
 `;
 
 export const DisplayKeyLineContainer = styled.div`
   background-color: #fff;
-  height: 80px;
-  width: 500px;
-  margin-bottom: 1px;
   display: flex;
+  flex-direction: row;
+
   align-items: center;
-  position: absolute;
-  border-radius: 3px;
-  margin-top: 30px;
+  height: 100%;
+  width: 100%;
+  /* grid-row: 1; */
+  /* height: 80px; */
+  /* width: 500px; */
+  /* margin-bottom: 1px; */
+  /* position: absolute; */
+  /* border-radius: 3px; */
+  /* margin-top: 30px; */
 `;
 
 export const DisplayKeysContainer = styled.div`
+  grid-row: 2;
+  grid-column: 1 / span 3;
+  width: 85%;
+  margin-top: 6%;
+  height: 50%;
   display: flex;
   flex-direction: row;
-  /* width: 100%; */
   justify-content: flex-start;
   align-items: center;
+  background-color: #fff;
 `;

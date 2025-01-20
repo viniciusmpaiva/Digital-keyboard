@@ -2,8 +2,9 @@ import React, { useState, useRef, useEffect } from 'react';
 
 import {
   Container,
-  ReadInputContainer,
-  KeyboardContainer,
+  TextInputContainer,
+  KeysContainer,
+  CenterItems,
   DisplayKeyLineContainer,
   DisplayKeysContainer,
 } from './styled';
@@ -122,57 +123,52 @@ export default function Keyboard({
 
   return (
     <Container>
-      <ReadInputContainer>
+      <TextInputContainer>
         <input type="text" value={text} autoFocus ref={inputRef} />
         <SpecialButtons
           onClick={(e) => handleSpecialButtonClick(e)}
           changePressed={changePressed}
         />
-      </ReadInputContainer>
+      </TextInputContainer>
       <DisplayKeysContainer>
-        <DisplayKeyLineContainer>
-          {showKeys !== null ? (
-            <Line
-              keys={showKeys}
-              handleKeyClick={handleKeyClick}
-              setActiveKeyIndex={setActiveKeyIndex}
-              onDrop={onDropKey}
-              changePressed={changePressed}
-              numberOfKeyBoxes={numberOfBoxes}
-            />
-          ) : null}
-        </DisplayKeyLineContainer>
-        <SpecialKeys
-          handleCaps={handleCaps}
-          handleSpace={handleSpace}
-          handleClear={handleClear}
-        />
-      </DisplayKeysContainer>
-      <KeyboardContainer>
-        {boxes.map((box, index) => (
-          <KeyBox
-            key={index}
-            keys={box}
-            onBoxClick={onBoxClick}
-            indexBox={index}
-            setActiveBox={setActiveBox}
-            setActiveBoxIndex={setActiveBoxIndex}
-            targetIndexBox={targetIndexBox}
-            setTargetIndexBox={setTargetIndexBox}
-            onDropBox={() => onDropBox(Math.floor(index / 4))}
-            numberOfKeyBoxes={numberOfBoxes}
-            isChangeBoxPressed={isChangeBoxPressed}
-            isChangeKeyPressed={isChangeKeyPressed}
-            setTargetKeyIndex={setTargetKeyIndex}
-            setTargetKeyBoxIndex={setTargetKeyBoxIndex}
+        {showKeys !== null ? (
+          <Line
+            keys={showKeys}
+            handleKeyClick={handleKeyClick}
             setActiveKeyIndex={setActiveKeyIndex}
-            setActiveKeyBoxIndex={setActiveKeyBoxIndex}
-            targetKeyIndex={targetKeyIndex}
-            targetKeyBoxIndex={targetKeyBoxIndex}
-            onDropKey={onDropKey}
+            onDrop={onDropKey}
+            changePressed={changePressed}
+            numberOfKeyBoxes={numberOfBoxes}
           />
-        ))}
-      </KeyboardContainer>
+        ) : null}
+      </DisplayKeysContainer>
+      <CenterItems>
+        <KeysContainer numberOfBoxes={numberOfBoxes}>
+          {boxes.map((box, index) => (
+            <KeyBox
+              key={index}
+              keys={box}
+              onBoxClick={onBoxClick}
+              indexBox={index}
+              setActiveBox={setActiveBox}
+              setActiveBoxIndex={setActiveBoxIndex}
+              targetIndexBox={targetIndexBox}
+              setTargetIndexBox={setTargetIndexBox}
+              onDropBox={() => onDropBox(Math.floor(index / 4))}
+              numberOfKeyBoxes={numberOfBoxes}
+              isChangeBoxPressed={isChangeBoxPressed}
+              isChangeKeyPressed={isChangeKeyPressed}
+              setTargetKeyIndex={setTargetKeyIndex}
+              setTargetKeyBoxIndex={setTargetKeyBoxIndex}
+              setActiveKeyIndex={setActiveKeyIndex}
+              setActiveKeyBoxIndex={setActiveKeyBoxIndex}
+              targetKeyIndex={targetKeyIndex}
+              targetKeyBoxIndex={targetKeyBoxIndex}
+              onDropKey={onDropKey}
+            />
+          ))}
+        </KeysContainer>
+      </CenterItems>
     </Container>
   );
 }

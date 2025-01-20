@@ -7,7 +7,7 @@ export default function Line({ keys, handleKeyClick, numberOfKeyBoxes }) {
   let widthKey;
   let heightKey;
   if (numberOfKeyBoxes === 7) {
-    widthKey = 119;
+    widthKey = 25;
     heightKey = 70;
   } else if (numberOfKeyBoxes === 6) {
     widthKey = 94;

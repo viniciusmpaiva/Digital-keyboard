@@ -4,13 +4,14 @@ export const KeyBoxContainer = styled.div`
   display: grid;
   background-color: #d9d9d9;
   grid-template-columns: repeat(2, 1fr);
-  width: ${(props) => props.width}px;
+  grid-column: ${(props) => props.indexBox + 1};
+  width: ${(props) => props.width}%;
   height: 123px;
   justify-items: center;
   align-items: center;
   border-radius: 3px;
-  margin-left: 5px;
-  margin-right: 5px;
+  /* margin-left: 7px;
+  margin-right: 5px; */
   transition:
     all 300ms,
     border 50ms;

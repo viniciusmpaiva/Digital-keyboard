@@ -3,6 +3,7 @@ import React, { useState, useEffect } from 'react';
 import Keyboard from './Components/Keyboard';
 import Options from './Components/Options';
 import Presets from './Components/Presets';
+import { PageContainer } from './styled';
 
 function App() {
   const [numberOfBoxes, setNumberOfBoxes] = useState(7);
@@ -42,25 +43,6 @@ function App() {
       setBoxes(newBoxes);
       setEditing(false);
     }
-
-    // if (window.webgazer) {
-    //   // Configura e inicia o WebGazer
-    //   window.webgazer
-    //     .setGazeListener((data, elapsedTime) => {
-    //       if (data) {
-    //         console.log(
-    //           `Olhar em x: ${data.x}, y: ${data.y} no tempo ${elapsedTime}`
-    //         );
-    //       }
-    //     })
-    //     .begin();
-
-    //   // Oculta elementos extras do WebGazer
-    //   window.webgazer
-    //     .showVideo(true)
-    //     .showFaceOverlay(true)
-    //     .showFaceFeedbackBox(true);
-    // }
   }, [numberOfBoxes]);
 
   const loadPresets = () => {
@@ -108,7 +90,7 @@ function App() {
   };
 
   return (
-    <>
+    <PageContainer>
       <Keyboard
         numberOfBoxes={numberOfBoxes}
         showKeys={showKeys}
@@ -132,14 +114,14 @@ function App() {
           setEditPressed={setEditPressed}
         />
       ) : null}
-      <Presets
+      {/* <Presets
         onPresetButtonClick={onPresetButtonClick}
         presets={presets}
         setPresets={setPresets}
         handleNewPreset={handleNewPreset}
         setEditPressed={setEditPressed}
-      />
-    </>
+      /> */}
+    </PageContainer>
   );
 }
 

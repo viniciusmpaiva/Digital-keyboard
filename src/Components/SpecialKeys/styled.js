@@ -3,12 +3,12 @@ import styled from 'styled-components';
 export const SpecialKeyContainer = styled.div`
   display: flex;
   justify-content: flex-start;
-  margin-bottom: 8px;
-  float: right;
-  position: absolute;
-  width: 400px;
-  margin-left: 510px;
-  margin-top: 4%;
+  /* float: right; */
+  /* margin-bottom: 8px; */
+  /* position: absolute; */
+  /* width: 400px; */
+  /* margin-left: 510px; */
+  /* margin-top: 4%; */
   button {
     width: 90px;
     height: 60px;

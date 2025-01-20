@@ -1,8 +1,8 @@
 import styled from 'styled-components';
 
 export const KeyButton = styled.button`
-  width: ${(props) => props.width}px;
-  height: ${(props) => props.height}px;
+  width: ${(props) => props.width}%;
+  height: ${(props) => props.height}%;
   font-size: ${(props) => props.fontSize};
   margin-left: ${(props) => props.marginleft};
   background-color: ${(props) => props.backgroundcolor || '#fff'};
