@@ -1,12 +1,10 @@
-import React, { useEffect } from 'react';
-import { PresetsContainer } from './styled';
+import React from 'react';
+import { PresetsContainer, ColumnItems } from './styled';
+import PresetButton from '../PresetButton';
 
 export default function Presets({
-  onPresetButtonClick,
-  presets,
   setPresets,
   handleNewPreset,
-  presetPressed,
   setEditPressed,
 }) {
   const handleClearPresets = () => {
@@ -16,32 +14,22 @@ export default function Presets({
   };
   return (
     <PresetsContainer>
-      <button
-        type="button"
-        className="newPresetButton"
-        onClick={handleNewPreset}
-      >
-        New Preset
-      </button>
-      {presets != null
-        ? presets.map((preset, index) => (
-            <button
-              className={`presetButton ${presetPressed}`}
-              key={index}
-              type="button"
-              onClick={() => onPresetButtonClick(index)}
-            >
-              Preset {index + 1}
-            </button>
-          ))
-        : null}
-      <button
-        type="button"
-        className="clearButton"
-        onClick={handleClearPresets}
-      >
-        CLEAR PRESETS
-      </button>
+      <ColumnItems>
+        <button
+          type="button"
+          className="newPresetButton"
+          onClick={handleNewPreset}
+        >
+          New Preset
+        </button>
+        <button
+          type="button"
+          className="clearButton"
+          onClick={handleClearPresets}
+        >
+          CLEAR PRESETS
+        </button>
+      </ColumnItems>
     </PresetsContainer>
   );
 }

@@ -3,6 +3,8 @@ import React, { useState, useEffect } from 'react';
 import Keyboard from './Components/Keyboard';
 import Options from './Components/Options';
 import Presets from './Components/Presets';
+import { PageContainer, OptionsDisplay, LeftItems } from './styled';
+import SavedPresets from './Components/SavedPresets';
 
 function App() {
   const [numberOfBoxes, setNumberOfBoxes] = useState(7);
@@ -20,6 +22,8 @@ function App() {
     ['Y', 'D', 'Ç', 'M'],
     ['U', 'F', 'Z', '?'],
   ]);
+
+  const LIMIT_PRESETS = 3;
 
   const [editing, setEditing] = useState(false);
 
@@ -42,25 +46,6 @@ function App() {
       setBoxes(newBoxes);
       setEditing(false);
     }
-
-    // if (window.webgazer) {
-    //   // Configura e inicia o WebGazer
-    //   window.webgazer
-    //     .setGazeListener((data, elapsedTime) => {
-    //       if (data) {
-    //         console.log(
-    //           `Olhar em x: ${data.x}, y: ${data.y} no tempo ${elapsedTime}`
-    //         );
-    //       }
-    //     })
-    //     .begin();
-
-    //   // Oculta elementos extras do WebGazer
-    //   window.webgazer
-    //     .showVideo(true)
-    //     .showFaceOverlay(true)
-    //     .showFaceFeedbackBox(true);
-    // }
   }, [numberOfBoxes]);
 
   const loadPresets = () => {
@@ -84,7 +69,7 @@ function App() {
   const onSaveButtonClick = () => {
     if (presets === null) {
       setPresets([boxes]);
-    } else if (presets.length < 5) {
+    } else if (presets.length < LIMIT_PRESETS) {
       const updatedPresets = [...presets, boxes];
       setPresets(updatedPresets);
     }
@@ -108,7 +93,36 @@ function App() {
   };
 
   return (
-    <>
+    <PageContainer>
+      <OptionsDisplay>
+        <LeftItems>
+          <Presets
+            presets={presets}
+            setPresets={setPresets}
+            handleNewPreset={handleNewPreset}
+            setEditPressed={setEditPressed}
+          />
+        </LeftItems>
+        {isEditPressed === false ? (
+          <SavedPresets
+            onPresetButtonClick={onPresetButtonClick}
+            presets={presets}
+          />
+        ) : (
+          <Options
+            setEditing={setEditing}
+            numberOfBoxes={numberOfBoxes}
+            setNumberOfBoxes={setNumberOfBoxes}
+            setShowKeys={setShowKeys}
+            isChangeBoxPressed={isChangeBoxPressed}
+            setChangeBoxPressed={setChangeBoxPressed}
+            isChangeKeyPressed={isChangeKeyPressed}
+            setChangeKeyPressed={setChangeKeyPressed}
+            onSaveButtonClick={onSaveButtonClick}
+            setEditPressed={setEditPressed}
+          />
+        )}
+      </OptionsDisplay>
       <Keyboard
         numberOfBoxes={numberOfBoxes}
         showKeys={showKeys}
@@ -118,28 +132,7 @@ function App() {
         boxes={boxes}
         setBoxes={setBoxes}
       />
-      {isEditPressed === true ? (
-        <Options
-          setEditing={setEditing}
-          numberOfBoxes={numberOfBoxes}
-          setNumberOfBoxes={setNumberOfBoxes}
-          setShowKeys={setShowKeys}
-          isChangeBoxPressed={isChangeBoxPressed}
-          setChangeBoxPressed={setChangeBoxPressed}
-          isChangeKeyPressed={isChangeKeyPressed}
-          setChangeKeyPressed={setChangeKeyPressed}
-          onSaveButtonClick={onSaveButtonClick}
-          setEditPressed={setEditPressed}
-        />
-      ) : null}
-      <Presets
-        onPresetButtonClick={onPresetButtonClick}
-        presets={presets}
-        setPresets={setPresets}
-        handleNewPreset={handleNewPreset}
-        setEditPressed={setEditPressed}
-      />
-    </>
+    </PageContainer>
   );
 }
 

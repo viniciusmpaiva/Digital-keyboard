@@ -23,27 +23,24 @@ export default function KeyBox({
 }) {
   let widthBox;
   let widthKey;
-  let heightKey;
+  let heightKey = 90;
+  let heightBox = 90;
   if (numberOfKeyBoxes === 7) {
-    widthBox = 123;
-    widthKey = 50;
-    heightKey = 50;
+    widthKey = 90;
+    widthBox = 13;
   } else if (numberOfKeyBoxes === 6) {
-    widthBox = 144;
-    widthKey = 63;
-    heightKey = 35;
+    widthKey = 90;
+    widthBox = 15;
   } else if (numberOfKeyBoxes === 5) {
-    widthBox = 165;
-    widthKey = 75;
-    heightKey = 35;
+    widthKey = 90;
+    widthBox = 19;
   } else if (numberOfKeyBoxes === 4) {
-    widthBox = 206;
-    widthKey = 95;
-    heightKey = 26;
+    widthKey = 90;
+    widthBox = 24;
   } else {
-    widthBox = 300;
-    widthKey = 137;
-    heightKey = 21;
+    widthKey = 90;
+    widthBox = 32;
+    heightKey = 80;
   }
 
   const handleBoxClick = () => {
@@ -54,6 +51,7 @@ export default function KeyBox({
   };
   return (
     <KeyBoxContainer
+      indexBox={indexBox}
       className={targetIndexBox === indexBox ? 'target' : ''}
       onClick={() => handleBoxClick()}
       draggable={isChangeBoxPressed}
@@ -80,6 +78,7 @@ export default function KeyBox({
         setTargetIndexBox(indexBox);
       }}
       width={widthBox}
+      height={heightBox}
     >
       {keys.map((key, indexKey) => {
         return (

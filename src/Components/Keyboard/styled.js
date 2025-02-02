@@ -1,33 +1,25 @@
 import styled from 'styled-components';
 
 export const Container = styled.div`
-  width: 900px;
-  max-width: 900px;
-  height: 350px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 85%;
   background-color: #d9d9d9;
-  display: grid;
-  position: absolute;
-  left: 50%;
-  bottom: 0;
-  transform: translateX(-50%);
-  margin-bottom: 20px;
-  border-radius: 5px;
-  align-items: center;
-  justify-content: center;
+  height: 70%;
+  border-radius: 4px;
 `;
 
-export const ReadInputContainer = styled.div`
+export const TextInputContainer = styled.div`
   display: flex;
-  align-items: baseline;
-  height: 50px;
-  margin-bottom: 40px;
-
+  flex-direction: row;
+  justify-content: flex-end;
   input {
+    margin-right: 2%;
     border: none;
-    margin-top: 20px;
-    margin-left: 1px;
-    width: 770px;
-    height: 28px;
+    width: 85%;
+    height: 80%;
+    margin-top: 2%;
     border-radius: 2px;
     border-color: #fff;
   }
@@ -37,40 +29,31 @@ export const ReadInputContainer = styled.div`
   }
 `;
 
-export const KeyboardContainer = styled.div`
+export const CenterItems = styled.div`
+  display: flex;
+  height: 85%;
+  flex-direction: column;
+  justify-content: flex-end;
+  align-items: center;
+`;
+export const KeysContainer = styled.div`
   background-color: #fff;
-  max-width: 890px;
-  height: 190px;
   border-radius: 4px;
   display: flex;
   align-items: center;
-  justify-content: center;
-  margin-top: 40px;
-`;
-
-export const LastLineContainer = styled.div`
-  display: flex;
-  justify-content: space-between;
-  width: 100%;
-  margin-bottom: 7px;
-`;
-
-export const DisplayKeyLineContainer = styled.div`
-  background-color: #fff;
-  height: 80px;
-  width: 500px;
-  margin-bottom: 1px;
-  display: flex;
-  align-items: center;
-  position: absolute;
-  border-radius: 3px;
-  margin-top: 30px;
+  justify-content: space-evenly;
+  height: 100%;
+  width: 98%;
 `;
 
 export const DisplayKeysContainer = styled.div`
+  width: 98%;
+  border-radius: 4px;
+  height: 80%;
+  margin-bottom: 1%;
   display: flex;
   flex-direction: row;
-  /* width: 100%; */
   justify-content: flex-start;
   align-items: center;
+  background-color: #fff;
 `;

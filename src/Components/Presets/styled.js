@@ -1,26 +1,26 @@
 import styled from 'styled-components';
 
 export const PresetsContainer = styled.div`
-  background-color: #f2f2f2;
-  width: 150px;
+  display: flex;
+  width: 100%;
+  height: 100%;
   border-radius: 5px;
-  left: 0px;
-  position: absolute;
+  flex-direction: row;
   button {
-    height: 50px;
-    width: 140px;
+    border-radius: 3px;
+    height: 100%;
+    width: 100%;
     background-color: #d9d9d9;
     border: none;
     font-size: 25px;
     font-family: 'Roboto', sans-serif;
-    margin-bottom: 20px;
     transition:
       all 300ms,
       border 50ms;
     cursor: pointer;
   }
   .newPresetButton {
-    margin-top: 10px;
+    margin-bottom: 3%;
     font-size: 20px;
   }
 
@@ -34,5 +34,13 @@ export const PresetsContainer = styled.div`
     font-size: 20px;
   }
   display: flex;
+`;
+
+export const ColumnItems = styled.div`
+  display: flex;
   flex-direction: column;
+  justify-content: space-between;
+  height: 100%;
+  width: 100%;
+  margin-bottom: 5%;
 `;
