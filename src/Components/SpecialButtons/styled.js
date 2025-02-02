@@ -4,9 +4,10 @@ export const SpecialButtonsContainer = styled.div`
   margin-right: 1%;
   margin-top: 2%;
   width: 10%;
+  height: 100%;
   display: flex;
   flex-direction: column;
-  .change {
+  /* .change {
     position: absolute;
     margin-left: -770px;
     margin-top: 90px;
@@ -19,12 +20,12 @@ export const SpecialButtonsContainer = styled.div`
     display: flex;
     align-items: center;
     justify-content: center;
-    font-size: 25px;
+    font-size: 25px; */
 
-    &.pressed {
-      background-color: #bfbfbf;
-    }
+  &.pressed {
+    background-color: #bfbfbf;
   }
+  /* } */
   .change:hover {
     filter: brightness(75%);
   }

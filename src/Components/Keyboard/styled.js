@@ -1,32 +1,24 @@
 import styled from 'styled-components';
 
 export const Container = styled.div`
-  grid-row: 2;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
   width: 85%;
   background-color: #d9d9d9;
-  height: 100%;
-  display: grid;
-  grid-template-rows: auto auto auto;
-  grid-template-columns: 1fr auto 1fr;
+  height: 70%;
   border-radius: 4px;
-`;
-export const CenterItems = styled.div`
-  grid-column: 1 / span 3;
-  grid-row: 3;
-  place-items: center;
 `;
 
 export const TextInputContainer = styled.div`
-  grid-column: 1 / span 3;
   display: flex;
   flex-direction: row;
   justify-content: flex-end;
-  grid-row: 1 / span 2;
   input {
     margin-right: 2%;
     border: none;
     width: 85%;
-    height: 20%;
+    height: 80%;
     margin-top: 2%;
     border-radius: 2px;
     border-color: #fff;
@@ -37,41 +29,28 @@ export const TextInputContainer = styled.div`
   }
 `;
 
+export const CenterItems = styled.div`
+  display: flex;
+  height: 85%;
+  flex-direction: column;
+  justify-content: flex-end;
+  align-items: center;
+`;
 export const KeysContainer = styled.div`
   background-color: #fff;
   border-radius: 4px;
   display: flex;
-  place-items: center;
+  align-items: center;
+  justify-content: space-evenly;
   height: 100%;
   width: 98%;
-  display: grid;
-
-  grid-template-columns: repeat(${(props) => props.numberOfBoxes}, 1fr);
-`;
-
-export const DisplayKeyLineContainer = styled.div`
-  background-color: #fff;
-  display: flex;
-  flex-direction: row;
-
-  align-items: center;
-  height: 100%;
-  width: 100%;
-  /* grid-row: 1; */
-  /* height: 80px; */
-  /* width: 500px; */
-  /* margin-bottom: 1px; */
-  /* position: absolute; */
-  /* border-radius: 3px; */
-  /* margin-top: 30px; */
 `;
 
 export const DisplayKeysContainer = styled.div`
-  grid-row: 2;
-  grid-column: 1 / span 3;
-  width: 85%;
-  margin-top: 6%;
-  height: 50%;
+  width: 98%;
+  border-radius: 4px;
+  height: 80%;
+  margin-bottom: 1%;
   display: flex;
   flex-direction: row;
   justify-content: flex-start;

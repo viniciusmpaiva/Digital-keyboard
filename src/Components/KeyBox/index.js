@@ -21,9 +21,27 @@ export default function KeyBox({
   targetKeyBoxIndex,
   onDropKey,
 }) {
-  let widthBox = 90;
-  let widthKey = 90;
+  let widthBox;
+  let widthKey;
   let heightKey = 90;
+  let heightBox = 90;
+  if (numberOfKeyBoxes === 7) {
+    widthKey = 90;
+    widthBox = 13;
+  } else if (numberOfKeyBoxes === 6) {
+    widthKey = 90;
+    widthBox = 15;
+  } else if (numberOfKeyBoxes === 5) {
+    widthKey = 90;
+    widthBox = 19;
+  } else if (numberOfKeyBoxes === 4) {
+    widthKey = 90;
+    widthBox = 24;
+  } else {
+    widthKey = 90;
+    widthBox = 32;
+    heightKey = 80;
+  }
 
   const handleBoxClick = () => {
     if (isChangeBoxPressed) {
@@ -60,6 +78,7 @@ export default function KeyBox({
         setTargetIndexBox(indexBox);
       }}
       width={widthBox}
+      height={heightBox}
     >
       {keys.map((key, indexKey) => {
         return (

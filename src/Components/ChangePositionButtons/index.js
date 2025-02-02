@@ -19,7 +19,7 @@ export default function ChangePositionButtons({
         }}
       >
         <CiLock />
-        Box
+        BOX
       </button>
       <button
         type="button"
@@ -30,7 +30,7 @@ export default function ChangePositionButtons({
         className={isChangeKeyPressed ? 'pressed' : ''}
       >
         <CiLock />
-        Key
+        KEY
       </button>
     </ChangePositionButtonsContainer>
   );

@@ -5,7 +5,6 @@ import {
   TextInputContainer,
   KeysContainer,
   CenterItems,
-  DisplayKeyLineContainer,
   DisplayKeysContainer,
 } from './styled';
 
@@ -130,19 +129,19 @@ export default function Keyboard({
           changePressed={changePressed}
         />
       </TextInputContainer>
-      <DisplayKeysContainer>
-        {showKeys !== null ? (
-          <Line
-            keys={showKeys}
-            handleKeyClick={handleKeyClick}
-            setActiveKeyIndex={setActiveKeyIndex}
-            onDrop={onDropKey}
-            changePressed={changePressed}
-            numberOfKeyBoxes={numberOfBoxes}
-          />
-        ) : null}
-      </DisplayKeysContainer>
       <CenterItems>
+        <DisplayKeysContainer>
+          {showKeys !== null ? (
+            <Line
+              keys={showKeys}
+              handleKeyClick={handleKeyClick}
+              setActiveKeyIndex={setActiveKeyIndex}
+              onDrop={onDropKey}
+              changePressed={changePressed}
+              numberOfKeyBoxes={numberOfBoxes}
+            />
+          ) : null}
+        </DisplayKeysContainer>
         <KeysContainer numberOfBoxes={numberOfBoxes}>
           {boxes.map((box, index) => (
             <KeyBox

@@ -1,19 +1,27 @@
 import styled from 'styled-components';
 
 export const PageContainer = styled.div`
-  display: grid;
-  width: 100vw;
-  grid-template-rows: 1fr 1fr;
-  height: 100vh;
-  place-items: center;
-  background-color: rgb(75, 68, 68);
-  /* max-width: 900px;
-  /* position: absolute; */
-  /* left: 50%; */
-  /* bottom: 0; */
-  /* transform: translateX(-50%); */
-  /* margin-bottom: 20px;
-  border-radius: 5px;
+  display: flex;
+  flex-direction: column;
   align-items: center;
-  justify-content: center; */
+  justify-content: flex-end;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgb(75, 68, 68);
+`;
+
+export const OptionsDisplay = styled.div`
+  flex-direction: row;
+  display: flex;
+  width: 85%;
+  height: 20%;
+  margin-bottom: 1%;
+`;
+
+export const LeftItems = styled.div`
+  display: flex;
+  flex-direction: column;
+  width: 20%;
+  height: 100%;
+  justify-content: flex-end;
 `;

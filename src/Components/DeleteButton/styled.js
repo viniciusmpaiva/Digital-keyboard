@@ -2,7 +2,7 @@ import styled from 'styled-components';
 
 export const DeleteButtonStyle = styled.button`
   width: 100%;
-  height: 25%;
+  height: 80%;
   border: none;
   border-radius: 4px;
   cursor: pointer;

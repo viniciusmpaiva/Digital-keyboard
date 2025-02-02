@@ -6,7 +6,6 @@ export default function SpecialButtons({ onClick, changePressed }) {
   return (
     <SpecialButtonsContainer>
       <DeleteButton onClick={onClick} />
-      <EnterButton onClick={onClick} />
     </SpecialButtonsContainer>
   );
 }

@@ -1,10 +1,12 @@
 import styled from 'styled-components';
 
 export const LineContainer = styled.div`
+  display: flex;
   align-items: center;
-  justify-content: center;
+  flex-direction: row;
+  justify-content: space-evenly;
   width: 100%;
-  /* height: 100%; */
+  height: 100%;
 
   button:hover {
     filter: brightness(75%);

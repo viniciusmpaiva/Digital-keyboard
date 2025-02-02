@@ -2,18 +2,17 @@ import styled from 'styled-components';
 
 export const NumberOfBoxesButtonsContainer = styled.div`
   display: flex;
-  justify-content: center;
+  justify-content: space-between;
   align-items: center;
-  margin-top: 130px;
   flex-direction: column;
-  margin-right: 100px;
+  width: 100%;
+  height: 100%;
   button {
-    width: 200px;
+    width: 100%;
+    height: 47%;
     align-items: center;
     justify-content: center;
     display: flex;
-    height: 35px;
-    margin-top: 5px;
     border-radius: 3px;
     border: none;
     transition:

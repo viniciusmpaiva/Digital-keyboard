@@ -1,9 +1,9 @@
 import React from 'react';
-import { FaRegSave } from 'react-icons/fa';
 import OptionsInput from '../OptionsInput';
 import NumberOfBoxesButtons from '../NumberOfBoxesButtons';
 import ChangePositionButtons from '../ChangePositionButtons';
 import { OptionsContainer } from './styled';
+import OptionsButtons from '../OptionsButtons';
 
 export default function Options({
   numberOfBoxes,
@@ -43,16 +43,6 @@ export default function Options({
 
   return (
     <OptionsContainer>
-      <button type="button" className="saveButton" onClick={onSaveButtonClick}>
-        <FaRegSave />
-      </button>
-      <button
-        type="button"
-        className="closeButton"
-        onClick={onCloseButtonClick}
-      >
-        Close
-      </button>
       <OptionsInput numberOfBoxes={numberOfBoxes} />
       <NumberOfBoxesButtons
         onPlusClick={onPlusClick}
@@ -63,6 +53,10 @@ export default function Options({
         setChangeBoxPressed={setChangeBoxPressed}
         isChangeKeyPressed={isChangeKeyPressed}
         setChangeKeyPressed={setChangeKeyPressed}
+      />
+      <OptionsButtons
+        onSaveButtonClick={onSaveButtonClick}
+        onCloseButtonClick={onCloseButtonClick}
       />
     </OptionsContainer>
   );
