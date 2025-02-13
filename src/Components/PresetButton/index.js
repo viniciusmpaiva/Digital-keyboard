@@ -8,14 +8,20 @@ import {
   PresetRenameButton,
 } from './styled';
 
-export default function PresetButton({ index, onPresetButtonClick }) {
+export default function PresetButton({
+  index,
+  onPresetButtonClick,
+  onDeletePresetButtonClick,
+}) {
   return (
     <PresetButtonContainer>
       <PresetNameButton onClick={() => onPresetButtonClick(index)}>
         Preset {index + 1}
       </PresetNameButton>
       <PresetOptionsContainer>
-        <PresetDeleteButton>Delete</PresetDeleteButton>
+        <PresetDeleteButton onClick={() => onDeletePresetButtonClick(index)}>
+          Delete
+        </PresetDeleteButton>
         <PresetRenameButton>Rename</PresetRenameButton>
       </PresetOptionsContainer>
     </PresetButtonContainer>

@@ -3,40 +3,51 @@ import styled from 'styled-components';
 export const SpecialKeyContainer = styled.div`
   display: flex;
   justify-content: flex-start;
-  /* float: right; */
-  /* margin-bottom: 8px; */
-  /* position: absolute; */
-  /* width: 400px; */
-  /* margin-left: 510px; */
-  /* margin-top: 4%; */
+  width: 98%;
+  height: 40%;
+  margin-top: 0.5%;
+
+  .space {
+    width: 50%;
+    height: 90%;
+    background-color: #fff;
+  }
+
+  .clear {
+    margin-left: 0.5%;
+    width: 16.5%;
+    height: 90%;
+  }
+
+  .upper {
+    margin-left: 0.5%;
+    width: 16%;
+    height: 90%;
+  }
+
+  .speak {
+    margin-left: 0.5%;
+    width: 16%;
+    height: 90%;
+  }
+
   button {
-    width: 90px;
-    height: 60px;
+    font-size: 150%;
     background-color: #fff;
     border: none;
-    border-radius: 4px;
     transition: all 300ms;
     display: flex;
     align-items: center;
     justify-content: center;
-    font-size: 23px;
-    margin-left: 5px;
     cursor: pointer;
+  }
+
+  .pressed {
+    background-color: rgb(185, 185, 185);
+    color: white;
   }
 
   button:hover {
     filter: brightness(75%);
-  }
-
-  .pressed {
-    background-color: #bfbfbf;
-    font-size: 25px;
-  }
-
-  .notPressed,
-  .space {
-    font-size: 23px;
-    align-items: center;
-    justify-content: center;
   }
 `;

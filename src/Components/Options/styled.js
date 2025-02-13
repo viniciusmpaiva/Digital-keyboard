@@ -5,5 +5,8 @@ export const OptionsContainer = styled.div`
   justify-content: center;
   align-items: center;
   flex-direction: row;
-  width: 80%;
+  width: 100%;
+  height: 20%;
+  margin-bottom: 1%;
+  margin-right: 1%;
 `;

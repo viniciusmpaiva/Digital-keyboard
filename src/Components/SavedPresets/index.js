@@ -8,6 +8,7 @@ export default function SavedPresets({
   presets,
   presetPressed,
   onPresetButtonClick,
+  onDeletePresetButtonClick,
 }) {
   return (
     <SavedPresetsContainer>
@@ -18,6 +19,7 @@ export default function SavedPresets({
               index={index}
               presetPressed={presetPressed}
               onPresetButtonClick={onPresetButtonClick}
+              onDeletePresetButtonClick={onDeletePresetButtonClick}
             />
           ))
         : null}

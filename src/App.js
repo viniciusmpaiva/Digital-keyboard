@@ -3,7 +3,7 @@ import React, { useState, useEffect } from 'react';
 import Keyboard from './Components/Keyboard';
 import Options from './Components/Options';
 import Presets from './Components/Presets';
-import { PageContainer, OptionsDisplay, LeftItems } from './styled';
+import { PageContainer, LeftItems, RightItems } from './styled';
 import SavedPresets from './Components/SavedPresets';
 
 function App() {
@@ -86,6 +86,12 @@ function App() {
     setBoxes(loadedBox);
   };
 
+  const onDeletePresetButtonClick = (index) => {
+    const updatedPresets = [...presets];
+    updatedPresets.splice(index, 1);
+    setPresets(updatedPresets);
+  };
+
   const handleNewPreset = () => {
     setEditPressed(!isEditPressed);
     setChangeBoxPressed(false);
@@ -94,21 +100,21 @@ function App() {
 
   return (
     <PageContainer>
-      <OptionsDisplay>
-        <LeftItems>
-          <Presets
-            presets={presets}
-            setPresets={setPresets}
-            handleNewPreset={handleNewPreset}
-            setEditPressed={setEditPressed}
-          />
-        </LeftItems>
-        {isEditPressed === false ? (
-          <SavedPresets
-            onPresetButtonClick={onPresetButtonClick}
-            presets={presets}
-          />
-        ) : (
+      <LeftItems>
+        <Presets
+          presets={presets}
+          setPresets={setPresets}
+          handleNewPreset={handleNewPreset}
+          setEditPressed={setEditPressed}
+        />
+        <SavedPresets
+          onDeletePresetButtonClick={onDeletePresetButtonClick}
+          onPresetButtonClick={onPresetButtonClick}
+          presets={presets}
+        />
+      </LeftItems>
+      <RightItems>
+        {isEditPressed ? (
           <Options
             setEditing={setEditing}
             numberOfBoxes={numberOfBoxes}
@@ -121,17 +127,17 @@ function App() {
             onSaveButtonClick={onSaveButtonClick}
             setEditPressed={setEditPressed}
           />
-        )}
-      </OptionsDisplay>
-      <Keyboard
-        numberOfBoxes={numberOfBoxes}
-        showKeys={showKeys}
-        setShowKeys={setShowKeys}
-        isChangeBoxPressed={isChangeBoxPressed}
-        isChangeKeyPressed={isChangeKeyPressed}
-        boxes={boxes}
-        setBoxes={setBoxes}
-      />
+        ) : null}
+        <Keyboard
+          numberOfBoxes={numberOfBoxes}
+          showKeys={showKeys}
+          setShowKeys={setShowKeys}
+          isChangeBoxPressed={isChangeBoxPressed}
+          isChangeKeyPressed={isChangeKeyPressed}
+          boxes={boxes}
+          setBoxes={setBoxes}
+        />
+      </RightItems>
     </PageContainer>
   );
 }

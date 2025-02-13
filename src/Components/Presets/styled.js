@@ -1,13 +1,12 @@
 import styled from 'styled-components';
 
 export const PresetsContainer = styled.div`
+  margin-top: 10%;
   display: flex;
-  width: 100%;
-  height: 100%;
-  border-radius: 5px;
+  width: 90%;
+  height: 43%;
   flex-direction: row;
   button {
-    border-radius: 3px;
     height: 100%;
     width: 100%;
     background-color: #d9d9d9;
@@ -24,7 +23,7 @@ export const PresetsContainer = styled.div`
     font-size: 20px;
   }
 
-  :hover {
+  button:hover {
     filter: brightness(75%);
   }
 
