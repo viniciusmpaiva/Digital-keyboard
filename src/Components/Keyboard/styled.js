@@ -4,28 +4,47 @@ export const Container = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  width: 85%;
+  width: 100%;
   background-color: #d9d9d9;
-  height: 70%;
+  height: 75%;
   border-radius: 4px;
 `;
 
 export const TextInputContainer = styled.div`
   display: flex;
   flex-direction: row;
-  justify-content: flex-end;
+  justify-content: center;
+  align-items: center;
+  align-content: center;
+  height: 10%;
+  margin-top: 1%;
   input {
-    margin-right: 2%;
+    margin-right: 1%;
     border: none;
-    width: 85%;
-    height: 80%;
-    margin-top: 2%;
+    width: 86%;
+    height: 95%;
     border-radius: 2px;
     border-color: #fff;
   }
+
   input:focus {
     outline: none;
     border: none;
+  }
+
+  button {
+    width: 10.5%;
+    height: 100%;
+    border: none;
+    border-radius: 2px;
+    transition:
+      all 300ms,
+      border 50ms;
+    cursor: pointer;
+  }
+
+  button:hover {
+    filter: brightness(75%);
   }
 `;
 

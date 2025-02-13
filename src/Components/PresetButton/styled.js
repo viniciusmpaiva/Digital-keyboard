@@ -1,9 +1,11 @@
 import styled from 'styled-components';
 
 export const PresetButtonContainer = styled.div`
+  margin-top: 3%;
   display: flex;
-  width: 32%;
+  width: 90%;
   flex-direction: column;
+  height: 100%;
 `;
 
 export const PresetNameButton = styled.button`

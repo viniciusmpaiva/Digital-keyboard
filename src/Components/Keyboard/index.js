@@ -8,10 +8,9 @@ import {
   DisplayKeysContainer,
 } from './styled';
 
-import SpecialButtons from '../SpecialButtons';
 import Line from '../Line';
-import SpecialKeys from '../SpecialKeys';
 import KeyBox from '../KeyBox';
+import SpecialKeys from '../SpecialKeys';
 
 export default function Keyboard({
   numberOfBoxes,
@@ -43,22 +42,10 @@ export default function Keyboard({
   const [activeBoxIndex, setActiveBoxIndex] = useState(null);
   const [targetIndexBox, setTargetIndexBox] = useState(null);
 
-  const handleDelete = () => {
+  const onDeleteButtonClick = () => {
     const newText = text.slice(0, text.length - 1);
     setText(newText);
     inputRef.current.focus();
-  };
-
-  const handleSpecialButtonClick = (e) => {
-    if (e.target.className === 'delete') {
-      handleDelete();
-    }
-    if (
-      e.target.className === 'change pressed' ||
-      e.target.className === 'change'
-    ) {
-      setChangePressed(!changePressed);
-    }
   };
 
   const handleKeyClick = (key) => {
@@ -71,6 +58,7 @@ export default function Keyboard({
   };
 
   const handleCaps = () => {
+    console.log(upperPressed);
     if (upperPressed === 'pressed') {
       setUpperPressed('notPressed');
       setIsUpper(false);
@@ -124,10 +112,9 @@ export default function Keyboard({
     <Container>
       <TextInputContainer>
         <input type="text" value={text} autoFocus ref={inputRef} />
-        <SpecialButtons
-          onClick={(e) => handleSpecialButtonClick(e)}
-          changePressed={changePressed}
-        />
+        <button type="button" onClick={onDeleteButtonClick}>
+          Delete
+        </button>
       </TextInputContainer>
       <CenterItems>
         <DisplayKeysContainer>
@@ -167,6 +154,12 @@ export default function Keyboard({
             />
           ))}
         </KeysContainer>
+        <SpecialKeys
+          handleCaps={handleCaps}
+          handleClear={handleClear}
+          handleSpace={handleSpace}
+          upperPressed={upperPressed}
+        />
       </CenterItems>
     </Container>
   );

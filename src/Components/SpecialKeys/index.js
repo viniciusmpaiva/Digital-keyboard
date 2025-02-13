@@ -1,5 +1,6 @@
 import { MdOutlineSpaceBar } from 'react-icons/md';
 import { PiArrowFatLineUpLight } from 'react-icons/pi';
+import { HiMiniSpeakerWave } from 'react-icons/hi2';
 
 import { SpecialKeyContainer } from './styled';
 
@@ -17,8 +18,15 @@ export default function SpecialKeys({
       <button type="button" className="clear" onClick={handleClear}>
         Clear
       </button>
-      <button type="button" className={upperPressed} onClick={handleCaps}>
+      <button
+        type="button"
+        className={`upper ${upperPressed}`}
+        onClick={handleCaps}
+      >
         <PiArrowFatLineUpLight />
+      </button>
+      <button type="button" className=" speak" onClick={handleCaps}>
+        <HiMiniSpeakerWave />
       </button>
     </SpecialKeyContainer>
   );
