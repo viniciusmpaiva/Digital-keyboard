@@ -2,15 +2,15 @@ import styled from 'styled-components';
 
 export const OptionsButtonsContainer = styled.div`
   display: flex;
-  justify-content: space-between;
-  flex-direction: column;
+  justify-content: space-evenly;
+  flex-direction: row;
   width: 100%;
-  height: 100%;
+  height: 40%;
   margin-left: 1%;
 
   button {
-    width: 100%;
-    height: 47%;
+    width: 49%;
+    height: 90%;
     background-color: #d9d9d9;
     border: none;
     cursor: pointer;

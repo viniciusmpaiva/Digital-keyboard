@@ -23,24 +23,24 @@ export default function KeyBox({
 }) {
   let widthBox;
   let widthKey;
-  let heightKey = 90;
-  let heightBox = 90;
+  let heightKey = 96;
+  let heightBox = 98;
   if (numberOfKeyBoxes === 7) {
-    widthKey = 90;
-    widthBox = 13;
+    widthKey = 96;
+    widthBox = 14;
   } else if (numberOfKeyBoxes === 6) {
-    widthKey = 90;
-    widthBox = 15;
+    widthKey = 97;
+    widthBox = 16;
   } else if (numberOfKeyBoxes === 5) {
-    widthKey = 90;
+    widthKey = 98;
     widthBox = 19;
   } else if (numberOfKeyBoxes === 4) {
-    widthKey = 90;
+    widthKey = 98;
     widthBox = 24;
   } else {
-    widthKey = 90;
+    widthKey = 98;
     widthBox = 32;
-    heightKey = 80;
+    heightKey = 95;
   }
 
   const handleBoxClick = () => {
@@ -83,6 +83,7 @@ export default function KeyBox({
       {keys.map((key, indexKey) => {
         return (
           <Key
+            isLine={false}
             key={indexKey}
             keyValue={key}
             handleKeyClick={() => {}}

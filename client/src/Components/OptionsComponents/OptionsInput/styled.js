@@ -3,13 +3,12 @@ import styled from 'styled-components';
 export const OptionsInputContainer = styled.div`
   display: flex;
   width: 100%;
-  height: 100%;
-  flex-direction: column;
+  height: 30%;
   justify-content: center;
   align-items: center;
   input {
-    width: 80%;
-    height: 25%;
+    width: 75%;
+    height: 60%;
     font-size: 150%;
   }
   label {

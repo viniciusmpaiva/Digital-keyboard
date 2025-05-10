@@ -12,8 +12,9 @@ export const KeyButton = styled.button`
   transition:
     all 300ms,
     border 50ms;
-  :hover {
-    filter: brightness(75%);
+  &:hover {
+    background-color: ${(props) =>
+      props.hover ? '#b3b3b3' : props.backgroundcolor || 'blue'};
   }
   &.dragging {
     opacity: 1;

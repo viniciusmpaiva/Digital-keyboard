@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from 'react';
 
-import KeyboardComponent from '../../Components/KeyboardComponent';
-import Options from '../../Components/Options';
-import Presets from '../../Components/Presets';
-import SavedPresets from '../../Components/SavedPresets';
+import KeyboardComponent from '../../Components/KeyboardComponents/KeyboardComponent';
+import Options from '../../Components/OptionsComponents/Options';
+import Presets from '../../Components/PresetComponents/Presets';
+import SavedPresets from '../../Components/PresetComponents/SavedPresets';
 import { PageContainer, LeftItems, RightItems } from './styled';
 
 function Keyboard() {
@@ -11,7 +11,7 @@ function Keyboard() {
   const [showKeys, setShowKeys] = useState(null);
   const [isChangeBoxPressed, setChangeBoxPressed] = useState(false);
   const [isChangeKeyPressed, setChangeKeyPressed] = useState(false);
-  const [isEditPressed, setEditPressed] = useState(false);
+  const [isOptionsPressed, setOptionsPressed] = useState(false);
   const [presets, setPresets] = useState([]);
   const [boxes, setBoxes] = useState([
     ['Q', 'I', 'G', 'X'],
@@ -73,7 +73,7 @@ function Keyboard() {
       const updatedPresets = [...presets, boxes];
       setPresets(updatedPresets);
     }
-    setEditPressed(!isEditPressed);
+    setOptionsPressed(!isOptionsPressed);
   };
 
   const onPresetButtonClick = (index) => {
@@ -92,43 +92,44 @@ function Keyboard() {
     setPresets(updatedPresets);
   };
 
-  const handleNewPreset = () => {
-    setEditPressed(!isEditPressed);
+  const handleOptionsButton = () => {
+    setOptionsPressed(!isOptionsPressed);
     setChangeBoxPressed(false);
     setChangeKeyPressed(false);
   };
 
   return (
     <PageContainer>
-      <LeftItems>
+      {/* <LeftItems>
         <Presets
           presets={presets}
           setPresets={setPresets}
           handleNewPreset={handleNewPreset}
-          setEditPressed={setEditPressed}
+          setOptionsPressed={setOptionsPressed}
         />
         <SavedPresets
           onDeletePresetButtonClick={onDeletePresetButtonClick}
           onPresetButtonClick={onPresetButtonClick}
           presets={presets}
         />
-      </LeftItems>
+      </LeftItems> */}
+      {isOptionsPressed ? (
+        <Options
+          setEditing={setEditing}
+          numberOfBoxes={numberOfBoxes}
+          setNumberOfBoxes={setNumberOfBoxes}
+          setShowKeys={setShowKeys}
+          isChangeBoxPressed={isChangeBoxPressed}
+          setChangeBoxPressed={setChangeBoxPressed}
+          isChangeKeyPressed={isChangeKeyPressed}
+          setChangeKeyPressed={setChangeKeyPressed}
+          onSaveButtonClick={onSaveButtonClick}
+          setOptionsPressed={setOptionsPressed}
+        />
+      ) : null}
       <RightItems>
-        {isEditPressed ? (
-          <Options
-            setEditing={setEditing}
-            numberOfBoxes={numberOfBoxes}
-            setNumberOfBoxes={setNumberOfBoxes}
-            setShowKeys={setShowKeys}
-            isChangeBoxPressed={isChangeBoxPressed}
-            setChangeBoxPressed={setChangeBoxPressed}
-            isChangeKeyPressed={isChangeKeyPressed}
-            setChangeKeyPressed={setChangeKeyPressed}
-            onSaveButtonClick={onSaveButtonClick}
-            setEditPressed={setEditPressed}
-          />
-        ) : null}
         <KeyboardComponent
+          handleOptionsButton={handleOptionsButton}
           numberOfBoxes={numberOfBoxes}
           showKeys={showKeys}
           setShowKeys={setShowKeys}

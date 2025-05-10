@@ -1,18 +1,19 @@
 import React from 'react';
 import { Route, Redirect } from 'react-router-dom/cjs/react-router-dom.min';
 import PropTypes from 'prop-types';
+import { useSelector } from 'react-redux';
 
 export default function RedirectRoute({
   component: Component,
   isClosed,
   ...rest
 }) {
-  const isAuthenticated = false;
+  const isAuthenticated = useSelector((state) => state.auth.isLoggedIn);
 
   if (isClosed && !isAuthenticated) {
     return (
       <Redirect
-        to={{ pathname: '/', state: { prevPath: rest.location.pathname } }}
+        to={{ pathname: '/login', state: { prevPath: rest.location.pathname } }}
       />
     );
   }

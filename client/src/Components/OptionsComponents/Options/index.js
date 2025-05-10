@@ -2,7 +2,7 @@ import React from 'react';
 import OptionsInput from '../OptionsInput';
 import NumberOfBoxesButtons from '../NumberOfBoxesButtons';
 import ChangePositionButtons from '../ChangePositionButtons';
-import { OptionsContainer } from './styled';
+import { OptionsContainer, OptionsPopUp } from './styled';
 import OptionsButtons from '../OptionsButtons';
 
 export default function Options({
@@ -14,7 +14,7 @@ export default function Options({
   isChangeKeyPressed,
   setChangeKeyPressed,
   onSaveButtonClick,
-  setEditPressed,
+  setOptionsPressed,
   setEditing,
 }) {
   const onPlusClick = () => {
@@ -36,28 +36,30 @@ export default function Options({
   };
 
   const onCloseButtonClick = () => {
-    setEditPressed(false);
+    setOptionsPressed(false);
     setChangeBoxPressed(false);
     setChangeKeyPressed(false);
   };
 
   return (
     <OptionsContainer>
-      <OptionsInput numberOfBoxes={numberOfBoxes} />
-      <NumberOfBoxesButtons
-        onPlusClick={onPlusClick}
-        onMinusClick={onMinusClick}
-      />
-      <ChangePositionButtons
-        isChangeBoxPressed={isChangeBoxPressed}
-        setChangeBoxPressed={setChangeBoxPressed}
-        isChangeKeyPressed={isChangeKeyPressed}
-        setChangeKeyPressed={setChangeKeyPressed}
-      />
-      <OptionsButtons
-        onSaveButtonClick={onSaveButtonClick}
-        onCloseButtonClick={onCloseButtonClick}
-      />
+      <OptionsPopUp>
+        <OptionsInput numberOfBoxes={numberOfBoxes} />
+        <NumberOfBoxesButtons
+          onPlusClick={onPlusClick}
+          onMinusClick={onMinusClick}
+        />
+        {/* <ChangePositionButtons
+          isChangeBoxPressed={isChangeBoxPressed}
+          setChangeBoxPressed={setChangeBoxPressed}
+          isChangeKeyPressed={isChangeKeyPressed}
+          setChangeKeyPressed={setChangeKeyPressed}
+        /> */}
+        <OptionsButtons
+          onSaveButtonClick={onSaveButtonClick}
+          onCloseButtonClick={onCloseButtonClick}
+        />
+      </OptionsPopUp>
     </OptionsContainer>
   );
 }

@@ -55,6 +55,7 @@ export default function Key({
       marginleft={marginLeft}
       backgroundcolor={backgroundColor}
       fontSize={fontSize}
+      hover={`${!!isLine}`}
     >
       {keyValue}
     </KeyButton>

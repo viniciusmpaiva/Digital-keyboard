@@ -5,10 +5,10 @@ import {
   TextInputContainer,
   KeysContainer,
   CenterItems,
-  DisplayKeysContainer,
 } from './styled';
 
-import Line from '../Line';
+import DisplayKeysPopUp from '../DisplayKeysPopUp';
+
 import KeyBox from '../KeyBox';
 import SpecialKeys from '../SpecialKeys';
 
@@ -20,6 +20,7 @@ export default function KeyboardComponent({
   isChangeKeyPressed,
   boxes,
   setBoxes,
+  handleOptionsButton,
 }) {
   const [text, setText] = useState('');
 
@@ -42,10 +43,9 @@ export default function KeyboardComponent({
   const [activeBoxIndex, setActiveBoxIndex] = useState(null);
   const [targetIndexBox, setTargetIndexBox] = useState(null);
 
-  const onDeleteButtonClick = () => {
+  const handleDelete = () => {
     const newText = text.slice(0, text.length - 1);
     setText(newText);
-    inputRef.current.focus();
   };
 
   const handleKeyClick = (key) => {
@@ -53,7 +53,6 @@ export default function KeyboardComponent({
     setIsUpper(false);
     const newText = text + letter;
     setText(newText);
-    inputRef.current.focus();
     setUpperPressed('notPressed');
   };
 
@@ -66,7 +65,6 @@ export default function KeyboardComponent({
     }
     setUpperPressed('pressed');
     setIsUpper(true);
-    inputRef.current.focus();
   };
 
   const handleSpace = () => {
@@ -74,13 +72,11 @@ export default function KeyboardComponent({
     setText(spacedText);
     setUpperPressed('notPressed');
     setIsUpper(false);
-    inputRef.current.focus();
   };
 
   const handleClear = () => {
     setText('');
     setUpperPressed('notPressed');
-    inputRef.current.focus();
   };
 
   const onDropKey = () => {
@@ -110,25 +106,24 @@ export default function KeyboardComponent({
 
   return (
     <Container>
+      {showKeys ? (
+        <DisplayKeysPopUp
+          keys={showKeys}
+          handleKeyClick={handleKeyClick}
+          numberOfKeyBoxes={numberOfBoxes}
+          text={text}
+          inputRef={inputRef}
+          setShowKeys={setShowKeys}
+          handleDelete={handleDelete}
+        />
+      ) : null}
       <TextInputContainer>
         <input type="text" value={text} autoFocus ref={inputRef} />
-        <button type="button" onClick={onDeleteButtonClick}>
+        <button type="button" onClick={handleDelete}>
           Delete
         </button>
       </TextInputContainer>
       <CenterItems>
-        <DisplayKeysContainer>
-          {showKeys !== null ? (
-            <Line
-              keys={showKeys}
-              handleKeyClick={handleKeyClick}
-              setActiveKeyIndex={setActiveKeyIndex}
-              onDrop={onDropKey}
-              changePressed={changePressed}
-              numberOfKeyBoxes={numberOfBoxes}
-            />
-          ) : null}
-        </DisplayKeysContainer>
         <KeysContainer numberOfBoxes={numberOfBoxes}>
           {boxes.map((box, index) => (
             <KeyBox
@@ -155,6 +150,7 @@ export default function KeyboardComponent({
           ))}
         </KeysContainer>
         <SpecialKeys
+          handleOptionsButton={handleOptionsButton}
           handleCaps={handleCaps}
           handleClear={handleClear}
           handleSpace={handleSpace}

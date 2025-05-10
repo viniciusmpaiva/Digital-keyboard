@@ -9,6 +9,7 @@ export default function SpecialKeys({
   handleClear,
   handleSpace,
   upperPressed,
+  handleOptionsButton,
 }) {
   return (
     <SpecialKeyContainer>
@@ -27,6 +28,9 @@ export default function SpecialKeys({
       </button>
       <button type="button" className=" speak" onClick={handleCaps}>
         <HiMiniSpeakerWave />
+      </button>
+      <button type="button" className=" speak" onClick={handleOptionsButton}>
+        Options
       </button>
     </SpecialKeyContainer>
   );
