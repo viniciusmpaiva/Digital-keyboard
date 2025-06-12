@@ -120,7 +120,7 @@ export default function KeyboardComponent({
       <TextInputContainer>
         <input type="text" value={text} autoFocus ref={inputRef} />
         <button type="button" onClick={handleDelete}>
-          Delete
+          DELETE
         </button>
       </TextInputContainer>
       <CenterItems>

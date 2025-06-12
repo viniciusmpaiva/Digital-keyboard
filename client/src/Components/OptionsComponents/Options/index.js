@@ -1,65 +1,90 @@
-import React from 'react';
-import OptionsInput from '../OptionsInput';
-import NumberOfBoxesButtons from '../NumberOfBoxesButtons';
-import ChangePositionButtons from '../ChangePositionButtons';
-import { OptionsContainer, OptionsPopUp } from './styled';
-import OptionsButtons from '../OptionsButtons';
+import React, { useState, useEffect } from 'react';
+import {
+  OptionsContainer,
+  OptionsPopUp,
+  OptionsButtonsContainer,
+} from './styled';
+import NumberOfBoxesPopUp from '../NumberOfBoxesPopUp';
 
 export default function Options({
+  setBoxes,
   numberOfBoxes,
   setNumberOfBoxes,
-  setShowKeys,
-  isChangeBoxPressed,
   setChangeBoxPressed,
-  isChangeKeyPressed,
   setChangeKeyPressed,
-  onSaveButtonClick,
   setOptionsPressed,
   setEditing,
 }) {
-  const onPlusClick = () => {
-    if (numberOfBoxes > 6) {
-      return;
-    }
-    setNumberOfBoxes(numberOfBoxes + 1);
-    setEditing(true);
-    setShowKeys(null);
-  };
-  const onMinusClick = () => {
-    if (numberOfBoxes < 4) {
-      return;
-    }
-    setNumberOfBoxes(numberOfBoxes - 1);
-    setEditing(true);
+  const [isNumberOfBoxesPressed, setNumberOfBoxesPressed] = useState(false);
 
-    setShowKeys(null);
-  };
+  const alph = [
+    ['A', 'B', 'C', 'D'],
+    ['E', 'F', 'G', 'H'],
+    ['I', 'J', 'K', 'L'],
+    ['M', 'N', 'O', 'P'],
+    ['Q', 'R', 'S', 'T'],
+    ['U', 'V', 'W', 'X'],
+    ['Y', 'Z', 'Ç', '?'],
+  ];
+
+  const kwert = [
+    ['Q', 'W', 'E', 'R'],
+    ['T', 'Y', 'U', 'I'],
+    ['O', 'P', 'A', 'S'],
+    ['D', 'F', 'G', 'H'],
+    ['J', 'K', 'L', 'Ç'],
+    ['Z', 'X', 'C', 'V'],
+    ['B', 'N', 'M', '?'],
+  ];
 
   const onCloseButtonClick = () => {
     setOptionsPressed(false);
     setChangeBoxPressed(false);
     setChangeKeyPressed(false);
   };
+  const onChangeKeyboardLayoutClick = (model) => {
+    if (model === 'qwerty') {
+      setBoxes(kwert);
+    }
+    if (model === 'alphabetic') {
+      setBoxes(alph);
+    }
+    onCloseButtonClick();
+  };
 
   return (
     <OptionsContainer>
-      <OptionsPopUp>
-        <OptionsInput numberOfBoxes={numberOfBoxes} />
-        <NumberOfBoxesButtons
-          onPlusClick={onPlusClick}
-          onMinusClick={onMinusClick}
+      {isNumberOfBoxesPressed ? (
+        <NumberOfBoxesPopUp
+          setEditing={setEditing}
+          setNumberOfBoxesPressed={setNumberOfBoxesPressed}
+          numberOfBoxes={numberOfBoxes}
+          setNumberOfBoxes={setNumberOfBoxes}
         />
-        {/* <ChangePositionButtons
-          isChangeBoxPressed={isChangeBoxPressed}
-          setChangeBoxPressed={setChangeBoxPressed}
-          isChangeKeyPressed={isChangeKeyPressed}
-          setChangeKeyPressed={setChangeKeyPressed}
-        /> */}
-        <OptionsButtons
-          onSaveButtonClick={onSaveButtonClick}
-          onCloseButtonClick={onCloseButtonClick}
-        />
-      </OptionsPopUp>
+      ) : (
+        <OptionsPopUp>
+          <OptionsButtonsContainer>
+            <button
+              type="button"
+              onClick={() => onChangeKeyboardLayoutClick('qwerty')}
+            >
+              QWERT
+            </button>
+            <button
+              type="button"
+              onClick={() => onChangeKeyboardLayoutClick('alphabetic')}
+            >
+              Alphabetic
+            </button>
+            <button type="button" onClick={onCloseButtonClick}>
+              Return
+            </button>
+            <button type="button" onClick={() => setNumberOfBoxesPressed(true)}>
+              Change Number of Boxes
+            </button>
+          </OptionsButtonsContainer>
+        </OptionsPopUp>
+      )}
     </OptionsContainer>
   );
 }

@@ -40,14 +40,14 @@ export default function DisplayKeysPopUp({
           {keys.map((key) => {
             return (
               <Key
-                isLine
+                fontSize={180}
                 key={key}
                 keyValue={key}
                 handleKeyClick={handleKeyClick}
                 width={widthKey}
                 height={heightKey}
                 backgroundColor="#d9d9d9"
-                fontSize="20px"
+                hover
               />
             );
           })}

@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-export const OptionsContainer = styled.div`
+export const NumberOfBoxesContainer = styled.div`
   position: absolute;
   top: 0;
   left: 0;
@@ -9,22 +9,20 @@ export const OptionsContainer = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-  background-color: rgba(0, 0, 0, 0.5);
   z-index: 1000;
 `;
 
-export const OptionsPopUp = styled.div`
+export const NumberOfBoxesPopUpContainer = styled.div`
   display: flex;
   background-color: white;
   justify-content: center;
   align-items: center;
   border-radius: 8px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
   width: 85%;
   height: 85%;
 `;
 
-export const OptionsButtonsContainer = styled.div`
+export const NumberOfBoxesPopUpButtonsContainer = styled.div`
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   grid-template-rows: repeat(2, auto);
@@ -32,16 +30,25 @@ export const OptionsButtonsContainer = styled.div`
   border-radius: 8px;
   width: 98%;
   height: 97%;
+
+  input {
+    font-family: 'Roboto', sans-serif;
+    font-weight: 300;
+    font-size: 150%;
+    height: 20%;
+  }
+
   button {
+    font-family: 'Roboto', sans-serif;
+    font-weight: 300;
     background-color: #d9d9d9;
     color: black;
     border: none;
     border-radius: 4px;
     cursor: pointer;
     font-size: 180%;
+
     transition: background-color 0.3s;
-    font-family: 'Roboto', sans-serif;
-    font-weight: 300;
 
     &:hover {
       background-color: #b3b3b3;

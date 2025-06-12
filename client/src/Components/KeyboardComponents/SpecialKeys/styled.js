@@ -32,7 +32,9 @@ export const SpecialKeyContainer = styled.div`
   }
 
   button {
-    font-size: 150%;
+    font-size: 180%;
+    font-family: 'Roboto', sans-serif;
+    font-weight: 300;
     background-color: #fff;
     border: none;
     transition: all 300ms;

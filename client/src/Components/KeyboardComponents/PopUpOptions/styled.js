@@ -19,6 +19,9 @@ export const PopUpOptionsButtonContainer = styled.div`
 `;
 
 export const PopUpOptionsButton = styled.button`
+  font-size: 150%;
+  font-family: 'Roboto', sans-serif;
+  font-weight: 300;
   background-color: #d9d9d9;
   border: none;
   border-radius: 5px;
@@ -31,14 +34,14 @@ export const PopUpOptionsButton = styled.button`
 `;
 
 export const InputPopUpOptions = styled.input`
+  font-size: 180%;
+  font-family: 'Roboto', sans-serif;
+  font-weight: 300;
   width: 47.5%;
   height: 80%;
   border-radius: 5px;
   border: none;
   padding: 10px;
-  font-size: 16px;
-  &:focus {
-    outline: none;
-    box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
-  }
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+  background-color: #f0f0f0; /* Background color */
 `;

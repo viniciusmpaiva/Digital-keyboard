@@ -10,6 +10,7 @@ export default function SpecialKeys({
   handleSpace,
   upperPressed,
   handleOptionsButton,
+  handlePositionButton,
 }) {
   return (
     <SpecialKeyContainer>
@@ -17,7 +18,7 @@ export default function SpecialKeys({
         <MdOutlineSpaceBar />
       </button>
       <button type="button" className="clear" onClick={handleClear}>
-        Clear
+        CLEAR
       </button>
       <button
         type="button"
@@ -26,11 +27,11 @@ export default function SpecialKeys({
       >
         <PiArrowFatLineUpLight />
       </button>
-      <button type="button" className=" speak" onClick={handleCaps}>
+      <button type="button" className="speak" onClick={handleCaps}>
         <HiMiniSpeakerWave />
       </button>
-      <button type="button" className=" speak" onClick={handleOptionsButton}>
-        Options
+      <button type="button" className="speak" onClick={handleOptionsButton}>
+        OPTIONS
       </button>
     </SpecialKeyContainer>
   );

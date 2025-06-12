@@ -10,11 +10,13 @@ export const KeyBoxContainer = styled.div`
   justify-items: center;
   align-items: center;
   border-radius: 3px;
-  /* margin-left: 7px;
-  margin-right: 5px; */
+
+  box-shadow: 0px 1px 2px rgba(0, 0, 0, 0.15);
+
   transition:
     all 300ms,
     border 50ms;
+
   cursor: pointer;
   &:hover {
     filter: brightness(75%);

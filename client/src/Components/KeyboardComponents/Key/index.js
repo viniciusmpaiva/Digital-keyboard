@@ -1,12 +1,12 @@
 import { KeyButton } from './styled';
 
 export default function Key({
+  fontSize,
+  hover,
   width,
   height,
   marginLeft,
   backgroundColor,
-  fontSize,
-  isLine,
   keyValue,
   handleKeyClick,
   isChangeKeyPressed,
@@ -24,7 +24,7 @@ export default function Key({
   return (
     <KeyButton
       draggable={isChangeKeyPressed}
-      className={`${indexKey === targetKeyIndex && indexBox === targetKeyBoxIndex && !isLine ? 'target' : ''}`}
+      className={`${indexKey === targetKeyIndex && indexBox === targetKeyBoxIndex ? 'target' : ''}`}
       key={keyValue}
       onClick={() => handleKeyClick(keyValue)}
       onDragStart={() => {
@@ -50,12 +50,12 @@ export default function Key({
         setTargetKeyIndex(indexKey);
         setTargetKeyBoxIndex(indexBox);
       }}
+      hover={hover}
       width={width}
       height={height}
-      marginleft={marginLeft}
-      backgroundcolor={backgroundColor}
+      marginLeft={marginLeft}
+      backgroundColor={backgroundColor}
       fontSize={fontSize}
-      hover={`${!!isLine}`}
     >
       {keyValue}
     </KeyButton>

@@ -18,7 +18,11 @@ export const TextInputContainer = styled.div`
   align-content: center;
   height: 10%;
   margin-top: 1%;
+
   input {
+    font-size: 120%;
+    font-family: 'Roboto', sans-serif;
+    font-weight: 300;
     margin-right: 1%;
     border: none;
     width: 86%;
@@ -33,6 +37,9 @@ export const TextInputContainer = styled.div`
   }
 
   button {
+    font-size: 150%;
+    font-family: 'Roboto', sans-serif;
+    font-weight: 300;
     width: 10.5%;
     height: 100%;
     border: none;

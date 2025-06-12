@@ -17,9 +17,9 @@ export default function PopUpOptions({
     <PopUpOptionsContainer>
       <InputPopUpOptions type="text" value={text} autoFocus ref={inputRef} />
       <PopUpOptionsButtonContainer>
-        <PopUpOptionsButton onClick={handleDelete}>Delete</PopUpOptionsButton>
+        <PopUpOptionsButton onClick={handleDelete}>DELETE</PopUpOptionsButton>
         <PopUpOptionsButton onClick={() => setShowKeys(null)}>
-          Back
+          RETURN
         </PopUpOptionsButton>
       </PopUpOptionsButtonContainer>
     </PopUpOptionsContainer>

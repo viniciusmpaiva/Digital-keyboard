@@ -23,24 +23,28 @@ export default function KeyBox({
 }) {
   let widthBox;
   let widthKey;
-  let heightKey = 96;
-  let heightBox = 98;
+  let heightKey;
+  let heightBox = 93;
   if (numberOfKeyBoxes === 7) {
-    widthKey = 96;
-    widthBox = 14;
+    heightKey = 95;
+    widthKey = 93;
+    widthBox = 13.5;
   } else if (numberOfKeyBoxes === 6) {
+    heightKey = 95;
     widthKey = 97;
     widthBox = 16;
   } else if (numberOfKeyBoxes === 5) {
-    widthKey = 98;
+    heightKey = 94;
+    widthKey = 96;
     widthBox = 19;
   } else if (numberOfKeyBoxes === 4) {
-    widthKey = 98;
+    heightKey = 93;
+    widthKey = 95;
     widthBox = 24;
   } else {
-    widthKey = 98;
+    heightKey = 91;
+    widthKey = 94;
     widthBox = 32;
-    heightKey = 95;
   }
 
   const handleBoxClick = () => {
@@ -83,7 +87,7 @@ export default function KeyBox({
       {keys.map((key, indexKey) => {
         return (
           <Key
-            isLine={false}
+            hover={false}
             key={indexKey}
             keyValue={key}
             handleKeyClick={() => {}}
@@ -100,6 +104,7 @@ export default function KeyBox({
             targetKeyIndex={targetKeyIndex}
             targetKeyBoxIndex={targetKeyBoxIndex}
             onDropKey={onDropKey}
+            fontSize={120}
           />
         );
       })}
