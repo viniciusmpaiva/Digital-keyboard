@@ -150,6 +150,7 @@ export default function KeyboardComponent({
           ))}
         </KeysContainer>
         <SpecialKeys
+          text={text}
           handleOptionsButton={handleOptionsButton}
           handleCaps={handleCaps}
           handleClear={handleClear}

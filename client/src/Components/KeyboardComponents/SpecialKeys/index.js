@@ -5,13 +5,20 @@ import { HiMiniSpeakerWave } from 'react-icons/hi2';
 import { SpecialKeyContainer } from './styled';
 
 export default function SpecialKeys({
+  text,
   handleCaps,
   handleClear,
   handleSpace,
   upperPressed,
   handleOptionsButton,
-  handlePositionButton,
 }) {
+  const handleSpeak = () => {
+    console.log('Speak button clicked');
+    const utterance = new SpeechSynthesisUtterance(text);
+    utterance.lang = 'pt-BR';
+    window.speechSynthesis.speak(utterance);
+  };
+
   return (
     <SpecialKeyContainer>
       <button type="button" className="space" onClick={handleSpace}>
@@ -27,7 +34,7 @@ export default function SpecialKeys({
       >
         <PiArrowFatLineUpLight />
       </button>
-      <button type="button" className="speak" onClick={handleCaps}>
+      <button type="button" className="speak" onClick={() => handleSpeak(text)}>
         <HiMiniSpeakerWave />
       </button>
       <button type="button" className="speak" onClick={handleOptionsButton}>
