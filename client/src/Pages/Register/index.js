@@ -4,7 +4,7 @@ import { get } from 'lodash';
 
 import { toast } from 'react-toastify';
 import history from '../../services/history';
-import axios from '../../services/axios';
+import { digitalKeyboardBackend } from '../../services/axios';
 
 import {
   RegisterContainer,
@@ -20,7 +20,7 @@ export default function Register() {
   const handleSubmit = async (e) => {
     try {
       e.preventDefault();
-      await axios.post('/users/', {
+      await digitalKeyboardBackend.post('/users/', {
         username,
         email,
         password,

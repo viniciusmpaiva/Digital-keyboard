@@ -1,4 +1,4 @@
-import React, { useState, useRef, useEffect } from 'react';
+import React, { useState, useRef, useEffect, use } from 'react';
 
 import {
   Container,
@@ -13,6 +13,8 @@ import KeyBox from '../KeyBox';
 import SpecialKeys from '../SpecialKeys';
 
 export default function KeyboardComponent({
+  text,
+  setText,
   numberOfBoxes,
   showKeys,
   setShowKeys,
@@ -22,8 +24,6 @@ export default function KeyboardComponent({
   setBoxes,
   handleOptionsButton,
 }) {
-  const [text, setText] = useState('');
-
   const inputRef = useRef(null);
 
   const [isUpper, setIsUpper] = useState('');
@@ -49,6 +49,7 @@ export default function KeyboardComponent({
   };
 
   const handleKeyClick = (key) => {
+    console.log(text);
     const letter = text.length === 0 || isUpper ? key : key.toLowerCase();
     setIsUpper(false);
     const newText = text + letter;

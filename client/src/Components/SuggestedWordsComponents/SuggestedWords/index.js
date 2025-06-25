@@ -2,12 +2,23 @@ import React from 'react';
 
 import { SuggestedWordsContainer, SuggestedWordButton } from './styled';
 
-export default function SuggestedWords() {
+export default function SuggestedWords({ suggestedWords, setText }) {
+  const { sugestoes } = suggestedWords;
+
+  console.log('SuggestedWords component rendered with:', suggestedWords);
+  console.log('Sugestoes:', sugestoes);
   return (
     <SuggestedWordsContainer>
-      <SuggestedWordButton type="button">brinquedo</SuggestedWordButton>
-      <SuggestedWordButton type="button">banco</SuggestedWordButton>
-      <SuggestedWordButton type="button">brinco</SuggestedWordButton>
+      {sugestoes &&
+        sugestoes.map((word, index) => (
+          <SuggestedWordButton
+            key={index}
+            type="button"
+            onClick={() => setText(word)}
+          >
+            {word}
+          </SuggestedWordButton>
+        ))}
     </SuggestedWordsContainer>
   );
 }

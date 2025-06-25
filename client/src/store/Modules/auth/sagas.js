@@ -4,17 +4,17 @@ import { get } from 'lodash';
 
 import * as actions from './actions';
 import * as types from '../types';
-import axios from '../../../services/axios';
+import { digitalKeyboardBackend } from '../../../services/axios';
 import history from '../../../services/history';
 
 function* loginRequest({ payload }) {
   try {
-    const response = yield call(axios.post, '/token', payload);
+    const response = yield call(digitalKeyboardBackend.post, '/token', payload);
     yield put(actions.loginSuccess({ ...response.data, ...payload }));
 
     toast.success('Login successful');
 
-    axios.defaults.headers.Authorization = `Bearer ${response.data.token}`;
+    digitalKeyboardBackend.defaults.headers.Authorization = `Bearer ${response.data.token}`;
 
     history.push(payload.prevPath);
   } catch (error) {
@@ -29,7 +29,7 @@ function persistRehydrate({ payload }) {
   if (!token) {
     return;
   }
-  axios.defaults.headers.Authorization = `Bearer ${token}`;
+  digitalKeyboardBackend.defaults.headers.Authorization = `Bearer ${token}`;
 }
 
 export default all([

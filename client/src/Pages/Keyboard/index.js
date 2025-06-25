@@ -4,8 +4,12 @@ import KeyboardComponent from '../../Components/KeyboardComponents/KeyboardCompo
 import SuggestedWords from '../../Components/SuggestedWordsComponents/SuggestedWords';
 import Options from '../../Components/OptionsComponents/Options';
 import { PageContainer } from './styled';
+import { recomNLP } from '../../services/axios';
 
 function Keyboard() {
+  const [text, setText] = useState('');
+  const [suggestedWords, setSuggestedWords] = useState([]);
+
   const [numberOfBoxes, setNumberOfBoxes] = useState(7);
   const [showKeys, setShowKeys] = useState(null);
   const [isChangeBoxPressed, setChangeBoxPressed] = useState(false);
@@ -23,6 +27,27 @@ function Keyboard() {
   ]);
 
   const [editing, setEditing] = useState(false);
+
+  useEffect(() => {
+    const params = {
+      prefixo: text,
+      limite: 5,
+    };
+
+    if (!text) {
+      setSuggestedWords([]);
+      return;
+    }
+
+    recomNLP
+      .get('/sugestoes/', { params })
+      .then((response) => {
+        setSuggestedWords(response.data);
+      })
+      .catch((error) => {
+        console.error('Erro ao buscar sugestões:', error.response || error);
+      });
+  }, [text]);
 
   useEffect(() => {
     const distributeKeys = () => {
@@ -72,8 +97,10 @@ function Keyboard() {
           setOptionsPressed={setOptionsPressed}
         />
       ) : null}
-      <SuggestedWords />
+      <SuggestedWords suggestedWords={suggestedWords} setText={setText} />
       <KeyboardComponent
+        text={text}
+        setText={setText}
         handleOptionsButton={handleOptionsButton}
         numberOfBoxes={numberOfBoxes}
         showKeys={showKeys}

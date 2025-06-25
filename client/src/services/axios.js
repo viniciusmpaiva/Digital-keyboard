@@ -1,5 +1,11 @@
 import axios from 'axios';
 
-export default axios.create({
-  baseURL: 'http://localhost:3001',
+const digitalKeyboardBackend = axios.create({
+  baseURL: process.env.DIGITAL_KEYBOARD_BACKEND_URL,
 });
+
+const recomNLP = axios.create({
+  baseURL: process.env.REACT_APP_RECOM_NLP_API_URL,
+});
+
+export { digitalKeyboardBackend, recomNLP };
