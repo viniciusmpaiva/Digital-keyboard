@@ -4,7 +4,7 @@ export const KeyBoxContainer = styled.div`
   display: grid;
   background-color: #d9d9d9;
   grid-template-columns: repeat(2, 1fr);
-  grid-column: ${(props) => props.indexBox + 1};
+  grid-column: ${(props) => props.$indexBox + 1};
   width: ${(props) => props.width}%;
   height: ${(props) => props.height}%;
   justify-items: center;

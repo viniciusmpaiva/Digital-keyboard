@@ -50,7 +50,7 @@ export default function Key({
         setTargetKeyIndex(indexKey);
         setTargetKeyBoxIndex(indexBox);
       }}
-      hover={hover}
+      $hover={hover}
       width={width}
       height={height}
       marginLeft={marginLeft}

@@ -119,13 +119,19 @@ export default function KeyboardComponent({
         />
       ) : null}
       <TextInputContainer>
-        <input type="text" value={text} autoFocus ref={inputRef} />
+        <input
+          type="text"
+          value={text}
+          onChange={(e) => setText(e.target.value)}
+          autoFocus
+          ref={inputRef}
+        />
         <button type="button" onClick={handleDelete}>
           DELETE
         </button>
       </TextInputContainer>
       <CenterItems>
-        <KeysContainer numberOfBoxes={numberOfBoxes}>
+        <KeysContainer>
           {boxes.map((box, index) => (
             <KeyBox
               key={index}

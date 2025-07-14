@@ -55,7 +55,7 @@ export default function KeyBox({
   };
   return (
     <KeyBoxContainer
-      indexBox={indexBox}
+      $indexBox={indexBox}
       className={targetIndexBox === indexBox ? 'target' : ''}
       onClick={() => handleBoxClick()}
       draggable={isChangeBoxPressed}

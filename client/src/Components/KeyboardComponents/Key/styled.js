@@ -21,7 +21,7 @@ export const KeyButton = styled.button`
 
   &:hover {
     background-color: ${(props) =>
-      props.hover ? '#b3b3b3' : props.backgroundColor};
+      props.$hover ? '#b3b3b3' : props.backgroundColor};
   }
 
   &:active {
