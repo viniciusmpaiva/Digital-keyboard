@@ -30,7 +30,7 @@ function Keyboard() {
 
   useEffect(() => {
     const params = {
-      prefixo: text,
+      texto: text,
       limite: 5,
     };
 
@@ -40,9 +40,10 @@ function Keyboard() {
     }
 
     recomNLP
-      .get('/sugestoes/', { params })
+      .get('/sugestoes_hibrido/', { params })
       .then((response) => {
-        setSuggestedWords(response.data);
+        console.log('Sugestões recebidas:', response.data.sugestoes);
+        setSuggestedWords(response.data.sugestoes);
       })
       .catch((error) => {
         console.error('Erro ao buscar sugestões:', error.response || error);
@@ -97,7 +98,11 @@ function Keyboard() {
           setOptionsPressed={setOptionsPressed}
         />
       ) : null}
-      <SuggestedWords suggestedWords={suggestedWords} setText={setText} />
+      <SuggestedWords
+        suggestedWords={suggestedWords}
+        setText={setText}
+        text={text}
+      />
       <KeyboardComponent
         text={text}
         setText={setText}
