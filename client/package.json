@@ -28,6 +28,7 @@
     "react-redux": "^9.2.0",
     "react-router-dom": "^5.3.4",
     "react-scripts": "5.0.1",
+    "react-switch": "^7.1.0",
     "react-toastify": "^10.0.6",
     "redux": "^5.0.1",
     "redux-persist": "^6.0.0",

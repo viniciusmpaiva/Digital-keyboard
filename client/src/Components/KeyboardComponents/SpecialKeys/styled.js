@@ -19,6 +19,16 @@ export const SpecialKeyContainer = styled.div`
     height: 90%;
   }
 
+  .toggle-container {
+    flex-direction: column;
+    margin-left: 0.5%;
+    width: 16.5%;
+    height: 90%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
   .upper {
     margin-left: 0.5%;
     width: 16%;
