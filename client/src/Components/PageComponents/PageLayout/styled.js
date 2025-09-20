@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-export const HomePageContainer = styled.div`
+export const PageLayoutContainer = styled.div`
   display: flex;
   align-items: center;
   flex-direction: column;
@@ -16,14 +16,4 @@ export const HomePageContainer = styled.div`
     font-size: 100%;
     text-align: center;
   }
-`;
-
-export const HomeButtonsContainer = styled.div`
-  display: flex;
-  flex-direction: column;
-  width: 20%;
-  height: 25%;
-  justify-content: center;
-  align-items: center;
-  gap: 1rem;
 `;

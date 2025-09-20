@@ -1,52 +1,27 @@
 import styled from 'styled-components';
 
-export const PresetButtonContainer = styled.div`
-  margin-top: 3%;
-  display: flex;
-  width: 90%;
-  flex-direction: column;
-  height: 100%;
-`;
-
-export const PresetNameButton = styled.button`
-  width: 100%;
-  height: 50%;
+export const PresetButtonContainer = styled.button`
   font-size: 150%;
+  font-family: 'Roboto', sans-serif;
+  font-weight: 300;
+  width: 20rem;
+  height: 8rem;
+  border: none;
+  border-radius: 2px;
+  margin: 1%;
+
+  transition:
+    all 300ms,
+    border 50ms;
   cursor: pointer;
+
   &:hover {
     filter: brightness(75%);
   }
-  border: none;
-`;
 
-export const PresetDeleteButton = styled.button`
-  width: 50%;
-  height: 100%;
-  cursor: pointer;
-  &:hover {
-    filter: brightness(75%);
+  &.pressed {
+    background-color: #a9a9a9;
+    font-size: 130%;
+    border: 2px solid black;
   }
-  border: none;
-  background-color: #ff6666;
-  font-size: 150%;
-  color: white;
-`;
-
-export const PresetRenameButton = styled.button`
-  width: 50%;
-  height: 100%;
-  cursor: pointer;
-  &:hover {
-    filter: brightness(75%);
-  }
-  border: none;
-  font-size: 150%;
-  background-color: rgb(163, 161, 157);
-  color: white;
-`;
-
-export const PresetOptionsContainer = styled.div`
-  display: flex;
-  flex-direction: row;
-  height: 50%;
 `;

@@ -1,27 +1,5 @@
 import styled from 'styled-components';
 
-export const NumberOfBoxesContainer = styled.div`
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  z-index: 1000;
-`;
-
-export const NumberOfBoxesPopUpContainer = styled.div`
-  display: flex;
-  background-color: white;
-  justify-content: center;
-  align-items: center;
-  border-radius: 8px;
-  width: 85%;
-  height: 85%;
-`;
-
 export const NumberOfBoxesPopUpButtonsContainer = styled.div`
   display: grid;
   grid-template-columns: repeat(2, 1fr);

@@ -1,76 +1,74 @@
 import React from 'react';
-import { isEmail } from 'validator';
-import { get } from 'lodash';
-
 import { toast } from 'react-toastify';
 import history from '../../services/history';
 import { digitalKeyboardBackend } from '../../services/axios';
-
-import {
-  RegisterContainer,
-  RegisterForm,
-  RegisterInputContainer,
-} from './styled';
+import AuthForm from '../../Components/PageComponents/AuthForm';
 
 export default function Register() {
-  const [email, setEmail] = React.useState('');
-  const [password, setPassword] = React.useState('');
-  const [username, setUsername] = React.useState('');
+  const registerFields = [
+    {
+      name: 'username',
+      type: 'text',
+      label: 'Username',
+      placeholder: 'Enter your username',
+      required: true,
+      autoComplete: 'username',
+    },
+    {
+      name: 'email',
+      type: 'email',
+      label: 'Email',
+      placeholder: 'Enter your email',
+      required: true,
+      autoComplete: 'email',
+    },
+    {
+      name: 'password',
+      type: 'password',
+      label: 'Password',
+      placeholder: 'Enter your password',
+      required: true,
+      autoComplete: 'new-password',
+    },
+  ];
 
-  const handleSubmit = async (e) => {
-    try {
-      e.preventDefault();
-      await digitalKeyboardBackend.post('/users/', {
-        username,
-        email,
-        password,
-      });
+  const validationRules = {
+    username: [
+      (value) => {
+        if (value.length < 3) {
+          return 'Username must be at least 3 characters long';
+        }
+        return null;
+      },
+    ],
+    password: [
+      (value) => {
+        if (value.length < 6) {
+          return 'Password must be at least 6 characters long';
+        }
+        return null;
+      },
+    ],
+  };
 
-      toast.success('User registered successfully');
-      history.push('/login');
-    } catch (error) {
-      const message = get(error, 'response.data.message', 'Unknown error');
-      toast.error(message);
-    }
+  const handleRegister = async (formData) => {
+    await digitalKeyboardBackend.post('/users', {
+      username: formData.username,
+      email: formData.email,
+      password: formData.password,
+    });
+
+    toast.success('User registered successfully');
+    history.push('/login');
   };
 
   return (
-    <RegisterContainer>
-      <h1>Register</h1>
-      <RegisterForm onSubmit={handleSubmit}>
-        <RegisterInputContainer>
-          <label>Username: </label>
-          <input
-            type="text"
-            id="username"
-            name="username"
-            placeholder="Enter your username"
-            onChange={(e) => setUsername(e.target.value)}
-            required
-          />
-        </RegisterInputContainer>
-        <RegisterInputContainer>
-          <label htmlFor="email">Email: </label>
-          <input
-            type="email"
-            id="email"
-            name="email"
-            placeholder="Enter your email"
-            onChange={(e) => setEmail(e.target.value)}
-          />
-        </RegisterInputContainer>
-        <RegisterInputContainer>
-          <label htmlFor="password">Password: </label>
-          <input
-            type="password"
-            id="password"
-            name="password"
-            placeholder="Enter your password"
-            onChange={(e) => setPassword(e.target.value)}
-          />
-        </RegisterInputContainer>
-        <button type="submit">Register</button>
-      </RegisterForm>
-    </RegisterContainer>
+    <AuthForm
+      title="Register"
+      fields={registerFields}
+      onSubmit={handleRegister}
+      buttonText="Register"
+      validationRules={validationRules}
+    />
   );
 }

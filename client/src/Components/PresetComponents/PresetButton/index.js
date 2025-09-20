@@ -1,29 +1,8 @@
 import React from 'react';
+import { PresetButtonContainer } from './styled';
 
-import {
-  PresetButtonContainer,
-  PresetDeleteButton,
-  PresetNameButton,
-  PresetOptionsContainer,
-  PresetRenameButton,
-} from './styled';
-
-export default function PresetButton({
-  index,
-  onPresetButtonClick,
-  onDeletePresetButtonClick,
-}) {
+export default function PresetButton({ content, onClick }) {
   return (
-    <PresetButtonContainer>
-      <PresetNameButton onClick={() => onPresetButtonClick(index)}>
-        Preset {index + 1}
-      </PresetNameButton>
-      <PresetOptionsContainer>
-        <PresetDeleteButton onClick={() => onDeletePresetButtonClick(index)}>
-          Delete
-        </PresetDeleteButton>
-        <PresetRenameButton>Rename</PresetRenameButton>
-      </PresetOptionsContainer>
-    </PresetButtonContainer>
+    <PresetButtonContainer onClick={onClick}>{content}</PresetButtonContainer>
   );
 }

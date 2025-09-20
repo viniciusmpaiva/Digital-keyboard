@@ -41,10 +41,12 @@ export const InputContainer = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: center;
-  align-items: center;
+  align-items: flex-start;
   width: 100%;
   height: 20%;
   gap: 5%;
+  padding: 0 10%;
+
   input {
     width: 80%;
     height: 50%;
@@ -54,13 +56,18 @@ export const InputContainer = styled.div`
     font-size: 100%;
     color: #000;
     background-color: #fff;
+    align-self: center;
     :focus {
       outline: none;
       border: none;
     }
   }
   label {
+    font-family: 'Roboto', sans-serif;
     font-size: 120%;
     color: #fff;
+    text-align: left;
+    align-self: center;
+    width: 80%;
   }
 `;

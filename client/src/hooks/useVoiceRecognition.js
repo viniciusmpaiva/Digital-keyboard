@@ -81,7 +81,8 @@ const useVoiceRecognition = (onTranscription, onSuggestions) => {
       socketRef.current.onmessage = (event) => {
         try {
           const data = JSON.parse(event.data);
-          console.log('Mensagem do servidor:', data);''
+          console.log('Mensagem do servidor:', data);
+          ('');
         } catch (parseError) {
           console.error('Erro ao processar mensagem do servidor:', parseError);
         }

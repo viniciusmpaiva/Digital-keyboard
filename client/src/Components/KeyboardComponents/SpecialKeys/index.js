@@ -49,7 +49,7 @@ export default function SpecialKeys({
       <button type="button" className="speak" onClick={handleOptionsButton}>
         OPTIONS
       </button>
-      <div className="toggle-container">
+      {/* <div className="toggle-container">
         Context Interpreter
         <Switch
           onChange={handleToggleContextInterpreter}
@@ -64,7 +64,7 @@ export default function SpecialKeys({
           height={30}
           width={60}
         />
-      </div>
+      </div> */}
     </SpecialKeyContainer>
   );
 }

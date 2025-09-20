@@ -1,10 +1,7 @@
 import React, { useState, useEffect } from 'react';
-import {
-  OptionsContainer,
-  OptionsPopUp,
-  OptionsButtonsContainer,
-} from './styled';
-import NumberOfBoxesPopUp from '../NumberOfBoxesPopUp';
+import { OptionsButtonsContainer } from './styled';
+import NumberOfBoxesModal from '../NumberOfBoxesModal';
+import Modal from '../../PageComponents/Modal';
 
 export default function Options({
   setBoxes,
@@ -53,38 +50,36 @@ export default function Options({
   };
 
   return (
-    <OptionsContainer>
+    <Modal>
       {isNumberOfBoxesPressed ? (
-        <NumberOfBoxesPopUp
+        <NumberOfBoxesModal
           setEditing={setEditing}
           setNumberOfBoxesPressed={setNumberOfBoxesPressed}
           numberOfBoxes={numberOfBoxes}
           setNumberOfBoxes={setNumberOfBoxes}
         />
       ) : (
-        <OptionsPopUp>
-          <OptionsButtonsContainer>
-            <button
-              type="button"
-              onClick={() => onChangeKeyboardLayoutClick('qwerty')}
-            >
-              QWERT
-            </button>
-            <button
-              type="button"
-              onClick={() => onChangeKeyboardLayoutClick('alphabetic')}
-            >
-              Alphabetic
-            </button>
-            <button type="button" onClick={onCloseButtonClick}>
-              Return
-            </button>
-            <button type="button" onClick={() => setNumberOfBoxesPressed(true)}>
-              Change Number of Boxes
-            </button>
-          </OptionsButtonsContainer>
-        </OptionsPopUp>
+        <OptionsButtonsContainer>
+          <button
+            type="button"
+            onClick={() => onChangeKeyboardLayoutClick('qwerty')}
+          >
+            QWERT
+          </button>
+          <button
+            type="button"
+            onClick={() => onChangeKeyboardLayoutClick('alphabetic')}
+          >
+            Alphabetic
+          </button>
+          <button type="button" onClick={onCloseButtonClick}>
+            Return
+          </button>
+          <button type="button" onClick={() => setNumberOfBoxesPressed(true)}>
+            Change Number of Boxes
+          </button>
+        </OptionsButtonsContainer>
       )}
-    </OptionsContainer>
+    </Modal>
   );
 }

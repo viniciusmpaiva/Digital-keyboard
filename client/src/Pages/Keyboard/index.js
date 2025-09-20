@@ -3,6 +3,7 @@ import React, { useState, useEffect } from 'react';
 import KeyboardComponent from '../../Components/KeyboardComponents/KeyboardComponent';
 import SuggestedWords from '../../Components/SuggestedWordsComponents/SuggestedWords';
 import Options from '../../Components/OptionsComponents/Options';
+import Presets from '../../Components/PresetComponents/Presets';
 import VoiceRecognitionButton from '../../Components/VoiceComponents/VoiceRecognitionButton';
 import VoiceTranscription from '../../Components/VoiceComponents/VoiceTranscription';
 import { PageContainer } from './styled';
@@ -18,6 +19,7 @@ function Keyboard() {
   const [isChangeBoxPressed, setChangeBoxPressed] = useState(false);
   const [isChangeKeyPressed, setChangeKeyPressed] = useState(false);
   const [isOptionsPressed, setOptionsPressed] = useState(false);
+  const [isPresetsModalOpen, setIsPresetsModalOpen] = useState(false);
   const [presets, setPresets] = useState([]);
   const [transcription, setTranscription] = useState('');
   const [voiceSuggestions, setVoiceSuggestions] = useState([]);
@@ -142,6 +144,7 @@ function Keyboard() {
 
   return (
     <PageContainer>
+      {/* {isPresetsModalOpen} */}
       {isOptionsPressed ? (
         <Options
           setBoxes={setBoxes}
@@ -153,7 +156,7 @@ function Keyboard() {
           setOptionsPressed={setOptionsPressed}
         />
       ) : null}
-      <VoiceRecognitionButton
+      {/* <VoiceRecognitionButton
         isRecording={isRecording}
         isConnected={isConnected}
         error={voiceError}
@@ -162,13 +165,17 @@ function Keyboard() {
       <VoiceTranscription
         transcription={transcription}
         isVisible={isRecording || transcription}
-      />
+      /> */}
 
-      <SuggestedWords
-        suggestedWords={suggestedWords}
-        setText={setText}
-        text={text}
-      />
+      {suggestedWords.length > 0 ? (
+        <SuggestedWords
+          suggestedWords={suggestedWords}
+          setText={setText}
+          text={text}
+        />
+      ) : (
+        <Presets />
+      )}
       <KeyboardComponent
         text={text}
         setText={setText}

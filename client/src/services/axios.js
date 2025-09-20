@@ -1,7 +1,7 @@
 import axios from 'axios';
 
 const digitalKeyboardBackend = axios.create({
-  baseURL: process.env.DIGITAL_KEYBOARD_BACKEND_URL,
+  baseURL: process.env.REACT_APP_DIGITAL_KEYBOARD_BACKEND_URL,
 });
 
 const recomNLP = axios.create({
