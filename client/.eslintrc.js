@@ -43,5 +43,6 @@ module.exports = {
     'no-plusplus': 0,
     'jsx-a11y/label-has-associated-control': 0,
     'react/no-array-index-key': 0,
+    'no-underscore-dangle': 0,
   },
 };

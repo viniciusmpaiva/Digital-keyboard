@@ -16,7 +16,7 @@ function* loginRequest({ payload }) {
 
     digitalKeyboardBackend.defaults.headers.Authorization = `Bearer ${response.data.token}`;
 
-    history.push(payload.prevPath);
+    history.push('/profiles');
   } catch (error) {
     toast.error('User or password invalid');
 

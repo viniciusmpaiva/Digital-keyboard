@@ -13,10 +13,10 @@ export default function Routes() {
   return (
     <Switch>
       <PrivateRoute path="/" exact component={Home} />
-      <PrivateRoute path="/keyboard" exact component={Keyboard} />
+      <PrivateRoute path="/keyboard" isClosed exact component={Keyboard} />
       <PrivateRoute path="/login" exact component={Login} />
       <PrivateRoute path="/register" exact component={Register} />
-      <PrivateRoute path="/profiles" exact component={ProfilesPage} />
+      <PrivateRoute path="/profiles" isClosed exact component={ProfilesPage} />
       <PrivateRoute path="*" component={Page404} />
     </Switch>
   );

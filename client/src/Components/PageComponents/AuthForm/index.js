@@ -110,7 +110,6 @@ export default function AuthForm({
         </InputContainer>
       ))}
       <Button
-        empty
         color={buttonColor}
         content={buttonText}
         width={buttonWidth}
