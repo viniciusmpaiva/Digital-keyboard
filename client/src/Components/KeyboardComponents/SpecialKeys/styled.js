@@ -41,6 +41,12 @@ export const SpecialKeyContainer = styled.div`
     height: 90%;
   }
 
+  .scan {
+    margin-left: 0.5%;
+    width: 16%;
+    height: 90%;
+  }
+
   button {
     font-size: 180%;
     font-family: 'Roboto', sans-serif;
@@ -61,5 +67,10 @@ export const SpecialKeyContainer = styled.div`
 
   button:hover {
     filter: brightness(75%);
+  }
+
+  button.scanned {
+    background-color: #aeaeaeff; /* Or any highlight color */
+    border: 2px solid #aeaeaeff;
   }
 `;

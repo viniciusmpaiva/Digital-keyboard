@@ -13,6 +13,10 @@ export default function SpecialKeys({
   handleSpace,
   upperPressed,
   handleOptionsButton,
+  isScanning,
+  toggleScan,
+  scannedSpecialKeyIndex,
+  isSpecialKeysSelected,
 }) {
   const [contextInterpreterEnabled, setContextInterpreterEnabled] =
     useState(false);
@@ -30,24 +34,47 @@ export default function SpecialKeys({
 
   return (
     <SpecialKeyContainer>
-      <button type="button" className="space" onClick={handleSpace}>
+      <button
+        type="button"
+        className={`space ${isSpecialKeysSelected && scannedSpecialKeyIndex === 0 ? 'scanned' : ''}`}
+        onClick={handleSpace}
+      >
         <MdOutlineSpaceBar />
       </button>
-      <button type="button" className="clear" onClick={handleClear}>
+      <button
+        type="button"
+        className={`clear ${isSpecialKeysSelected && scannedSpecialKeyIndex === 1 ? 'scanned' : ''}`}
+        onClick={handleClear}
+      >
         CLEAR
       </button>
       <button
         type="button"
-        className={`upper ${upperPressed}`}
+        className={`upper ${upperPressed} ${isSpecialKeysSelected && scannedSpecialKeyIndex === 2 ? 'scanned' : ''}`}
         onClick={handleCaps}
       >
         <PiArrowFatLineUpLight />
       </button>
-      <button type="button" className="speak" onClick={() => handleSpeak(text)}>
+      <button
+        type="button"
+        className={`speak ${isSpecialKeysSelected && scannedSpecialKeyIndex === 3 ? 'scanned' : ''}`}
+        onClick={() => handleSpeak(text)}
+      >
         <HiMiniSpeakerWave />
       </button>
-      <button type="button" className="speak" onClick={handleOptionsButton}>
+      <button
+        type="button"
+        className={`speak ${isSpecialKeysSelected && scannedSpecialKeyIndex === 4 ? 'scanned' : ''}`}
+        onClick={handleOptionsButton}
+      >
         OPTIONS
+      </button>
+      <button
+        type="button"
+        className={`scan ${isSpecialKeysSelected && scannedSpecialKeyIndex === 5 ? 'scanned' : ''}`}
+        onClick={toggleScan}
+      >
+        {isScanning ? 'STOP SCAN' : 'START SCAN'}
       </button>
       {/* <div className="toggle-container">
         Context Interpreter
