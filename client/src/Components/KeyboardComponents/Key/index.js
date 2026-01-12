@@ -20,11 +20,17 @@ export default function Key({
   targetKeyIndex,
   targetKeyBoxIndex,
   onDropKey,
+  isScanning,
+  isScanned,
 }) {
   return (
     <KeyButton
       draggable={isChangeKeyPressed}
-      className={`${indexKey === targetKeyIndex && indexBox === targetKeyBoxIndex ? 'target' : ''}`}
+      className={`${
+        indexKey === targetKeyIndex && indexBox === targetKeyBoxIndex
+          ? 'target'
+          : ''
+      } ${isScanned ? 'scanned' : ''}`}
       key={keyValue}
       onClick={() => handleKeyClick(keyValue)}
       onDragStart={() => {

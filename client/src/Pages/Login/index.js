@@ -2,6 +2,7 @@ import React from 'react';
 import { useDispatch } from 'react-redux';
 import { get } from 'lodash';
 import AuthForm from '../../Components/PageComponents/AuthForm';
+import PageLayout from '../../Components/PageComponents/PageLayout';
 import * as actions from '../../store/Modules/auth/actions';
 
 export default function Login(props) {
@@ -39,11 +40,15 @@ export default function Login(props) {
   };
 
   return (
-    <AuthForm
-      title="Login"
-      fields={loginFields}
-      onSubmit={handleLogin}
-      buttonText="Login"
-    />
+    <PageLayout>
+      <AuthForm
+        title="Login"
+        fields={loginFields}
+        onSubmit={handleLogin}
+        buttonText="Login"
+        buttonColor="#1a1a1a"
+        buttonWidth="20rem"
+      />
+    </PageLayout>
   );
 }

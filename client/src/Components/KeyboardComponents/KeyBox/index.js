@@ -20,6 +20,11 @@ export default function KeyBox({
   targetKeyIndex,
   targetKeyBoxIndex,
   onDropKey,
+  isScanning,
+  isScanned,
+  scannedKeyIndex,
+  scannedBoxIndex,
+  isBoxSelected,
 }) {
   let widthBox;
   let widthKey;
@@ -56,7 +61,9 @@ export default function KeyBox({
   return (
     <KeyBoxContainer
       $indexBox={indexBox}
-      className={targetIndexBox === indexBox ? 'target' : ''}
+      className={`${targetIndexBox === indexBox ? 'target' : ''} ${
+        isScanned ? 'scanned' : ''
+      }`}
       onClick={() => handleBoxClick()}
       draggable={isChangeBoxPressed}
       onDragStart={() => {
@@ -105,6 +112,12 @@ export default function KeyBox({
             targetKeyBoxIndex={targetKeyBoxIndex}
             onDropKey={onDropKey}
             fontSize={120}
+            isScanning={isScanning}
+            isScanned={
+              isBoxSelected &&
+              scannedBoxIndex === indexBox &&
+              scannedKeyIndex === indexKey
+            }
           />
         );
       })}

@@ -1,19 +1,30 @@
 import styled from 'styled-components';
 
+export const FormPageContainer = styled.div`
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  justify-content: center;
+  width: 100%;
+  height: 100vh;
+`;
+
 export const FormContainer = styled.div`
   display: flex;
   align-items: center;
   flex-direction: column;
   justify-content: start;
-  width: 100%;
-  height: 100vh;
-  background-color: #1a1a1a;
+  width: 30rem;
+  height: 40rem;
+  background-color: #708090;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 `;
 
 export const FormTitle = styled.h1`
   font-family: 'Roboto', sans-serif;
   font-style: normal;
-  color: #708090;
+  color: #1a1a1a;
   font-size: 300%;
   text-align: center;
   margin-bottom: 2rem;
@@ -24,14 +35,14 @@ export const InputContainer = styled.div`
   flex-direction: column;
   justify-content: center;
   align-items: flex-start;
-  width: 40%;
+  width: 100%;
   height: 20%;
   gap: 5%;
   padding: 0 10%;
   margin-bottom: 1rem;
 
   input {
-    width: 80%;
+    width: 90%;
     height: 50%;
     border-radius: 4px;
     border: ${(props) => (props.hasError ? '2px solid #ff4444' : 'none')};
@@ -51,8 +62,8 @@ export const InputContainer = styled.div`
   label {
     font-family: 'Roboto', sans-serif;
     font-size: 120%;
-    color: #fff;
-    text-align: left;
+    color: #1a1a1a;
+    margin-left: 1.5rem;
     margin-bottom: 0.5rem;
   }
 

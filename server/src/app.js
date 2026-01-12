@@ -4,6 +4,7 @@ import helmet from 'helmet';
 import userRoutes from './routes/user.routes';
 import profileRoutes from './routes/profile.routes';
 import tokenRoutes from './routes/token.routes';
+import presetRoutes from './routes/preset.router';
 
 class App {
   constructor() {
@@ -23,6 +24,7 @@ class App {
     this.app.use('/users', userRoutes);
     this.app.use('/profiles', profileRoutes);
     this.app.use('/token', tokenRoutes);
+    this.app.use('/presets', presetRoutes);
   }
 }
 

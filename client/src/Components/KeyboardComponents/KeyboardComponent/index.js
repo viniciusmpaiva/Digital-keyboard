@@ -1,4 +1,4 @@
-import React, { useState, useRef, useEffect, use } from 'react';
+import React, { useState, useRef, useEffect } from 'react';
 
 import {
   Container,
@@ -23,6 +23,15 @@ export default function KeyboardComponent({
   boxes,
   setBoxes,
   handleOptionsButton,
+  isScanning,
+  scannedBoxIndex,
+  setScannedBoxIndex,
+  scannedKeyIndex,
+  setScannedKeyIndex,
+  isBoxSelected,
+  toggleScan,
+  scannedSpecialKeyIndex,
+  isSpecialKeysSelected,
 }) {
   const inputRef = useRef(null);
 
@@ -153,6 +162,11 @@ export default function KeyboardComponent({
               targetKeyIndex={targetKeyIndex}
               targetKeyBoxIndex={targetKeyBoxIndex}
               onDropKey={onDropKey}
+              isScanning={isScanning}
+              isScanned={!isBoxSelected && scannedBoxIndex === index}
+              scannedKeyIndex={scannedKeyIndex}
+              scannedBoxIndex={scannedBoxIndex}
+              isBoxSelected={isBoxSelected}
             />
           ))}
         </KeysContainer>
@@ -163,6 +177,10 @@ export default function KeyboardComponent({
           handleClear={handleClear}
           handleSpace={handleSpace}
           upperPressed={upperPressed}
+          isScanning={isScanning}
+          toggleScan={toggleScan}
+          scannedSpecialKeyIndex={scannedSpecialKeyIndex}
+          isSpecialKeysSelected={isSpecialKeysSelected}
         />
       </CenterItems>
     </Container>

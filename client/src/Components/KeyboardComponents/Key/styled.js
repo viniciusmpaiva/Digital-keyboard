@@ -44,4 +44,9 @@ export const KeyButton = styled.button`
   &.disabled {
     pointer-events: none;
   }
+
+  &.scanned {
+    background-color: #aeaeaeff; /* Or any highlight color */
+    border: 2px solid #aeaeaeff;
+  }
 `;

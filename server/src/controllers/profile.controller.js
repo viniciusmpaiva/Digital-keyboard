@@ -9,7 +9,6 @@ export async function postProfile(req, res) {
 
     const newProfile = new Profile({
       name: req.body.name,
-      presets: req.body.presets,
       user: req._id,
     });
     await newProfile.save();
@@ -40,8 +39,6 @@ export async function getUserProfilesById(req, res) {
       return res.status(422).send({ message: 'User does not exist' });
     }
 
-    console.log(user);
-
     const profiles = await Profile.find({ user: req._id });
 
     if (!profiles || profiles.length === 0) {
@@ -65,6 +62,68 @@ export async function deleteProfile(req, res) {
     }
 
     res.status(200);
+  } catch (error) {
+    res.status(500);
+    res.send(error.message);
+  }
+}
+
+export async function updateProfile(req, res) {
+  try {
+    const updatedProfile = await Profile.findByIdAndUpdate(
+      req.params.id,
+      {
+        name: req.body.name,
+        presets: req.body.presets,
+      },
+      { new: true },
+    );
+
+    if (!updatedProfile) {
+      return res.status(404).send({ message: 'Profile not found' });
+    }
+
+    res.status(200);
+    res.send(updatedProfile);
+  } catch (error) {
+    res.status(500);
+    res.send(error.message);
+  }
+}
+
+export async function addNewPreset(req, res) {
+  try {
+    const profile = await Profile.findOne({ user: req._id });
+
+    if (!profile) {
+      return res.status(404).send({ message: 'Profile not found' });
+    }
+    profile.presets.push(req.body.preset);
+    await profile.save();
+
+    res.status(200);
+    res.send(profile);
+  } catch (error) {
+    res.status(500);
+    res.send(error.message);
+  }
+}
+
+export async function removePreset(req, res) {
+  try {
+    const profile = await Profile.findById(req.params.id);
+
+    if (!profile) {
+      return res.status(404).send({ message: 'Profile not found' });
+    }
+
+    profile.presets = profile.presets.filter(
+      (preset) => preset !== req.body.preset,
+    );
+    await profile.save();
+
+    res.status(200);
+    res.send(profile);
   } catch (error) {
     res.status(500);
     res.send(error.message);

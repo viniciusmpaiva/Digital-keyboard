@@ -20,7 +20,6 @@ export default function reducer(state = initialState, action) {
     }
 
     case LOGIN_SUCCESS: {
-      console.log('LOGIN_SUCCESS', action.payload);
       const newState = { ...state };
       newState.isLoggedIn = true;
       newState.token = action.payload.token;

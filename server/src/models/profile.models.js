@@ -9,9 +9,10 @@ const profileSchema = new mongoose.Schema({
     maxlength: 30,
   },
 
-  presets: {
-    type: [[String]],
-  },
+  presets: [{
+    type: mongoose.Schema.Types.ObjectId,
+    ref: 'preset',
+  }],
 
   user: {
     type: mongoose.Schema.Types.ObjectId,

@@ -25,4 +25,9 @@ export const KeyBoxContainer = styled.div`
     border: 2px solid #000;
     background-color: #999;
   }
+
+  &.scanned {
+    background-color: #aeaeaeff; /* Or any highlight color */
+    border: 2px solid #aeaeaeff;
+  }
 `;
